@@ -41,7 +41,8 @@
     "illuminate/console": "^10.0",
     "illuminate/filesystem": "^10.0",
     "prettus/laravel-validation": "~1.4",
-    "illuminate/validation": "^10.0"
+    "illuminate/validation": "^10.0",
+    "league/fractal": "^0.20"
   },
   "autoload": {
     "psr-4": {

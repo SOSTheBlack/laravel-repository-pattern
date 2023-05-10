@@ -1,7 +1,7 @@
 <?php
 /*
 |--------------------------------------------------------------------------
-| Prettus Repository Config
+| Laravel Repository Config
 |--------------------------------------------------------------------------
 |
 |
@@ -116,7 +116,7 @@ return [
             |--------------------------------------------------------------------------
             |
             |
-            | Ex: http://prettus.local/?search=lorem&skipCache=true
+            | Ex: http://sostheblack.local/?search=lorem&skipCache=true
             |
             */
             'skipCache' => 'skipCache'
@@ -182,32 +182,32 @@ return [
         | Params :
         |
         | - search : Searched value
-        |   Ex: http://prettus.local/?search=lorem
+        |   Ex: http://sostheblack.local/?search=lorem
         |
         | - searchFields : Fields in which research should be carried out
         |   Ex:
-        |    http://prettus.local/?search=lorem&searchFields=name;email
-        |    http://prettus.local/?search=lorem&searchFields=name:like;email
-        |    http://prettus.local/?search=lorem&searchFields=name:like
+        |    http://sostheblack.local/?search=lorem&searchFields=name;email
+        |    http://sostheblack.local/?search=lorem&searchFields=name:like;email
+        |    http://sostheblack.local/?search=lorem&searchFields=name:like
         |
         | - filter : Fields that must be returned to the response object
         |   Ex:
-        |   http://prettus.local/?search=lorem&filter=id,name
+        |   http://sostheblack.local/?search=lorem&filter=id,name
         |
         | - orderBy : Order By
         |   Ex:
-        |   http://prettus.local/?search=lorem&orderBy=id
+        |   http://sostheblack.local/?search=lorem&orderBy=id
         |
         | - sortedBy : Sort
         |   Ex:
-        |   http://prettus.local/?search=lorem&orderBy=id&sortedBy=asc
-        |   http://prettus.local/?search=lorem&orderBy=id&sortedBy=desc
+        |   http://sostheblack.local/?search=lorem&orderBy=id&sortedBy=asc
+        |   http://sostheblack.local/?search=lorem&orderBy=id&sortedBy=desc
         |
         | - searchJoin: Specifies the search method (AND / OR), by default the
         |               application searches each parameter with OR
         |   EX:
-        |   http://prettus.local/?search=lorem&searchJoin=and
-        |   http://prettus.local/?search=lorem&searchJoin=or
+        |   http://sostheblack.local/?search=lorem&searchJoin=and
+        |   http://sostheblack.local/?search=lorem&searchJoin=or
         |
         */
         'params'             => [
@@ -234,7 +234,7 @@ return [
         'paths'         => [
             'models'       => 'Entities',
             'repositories' => 'Repositories',
-            'interfaces'   => 'Repositories',
+            'interfaces'   => 'Repositories/Contracts',
             'transformers' => 'Transformers',
             'presenters'   => 'Presenters',
             'validators'   => 'Validators',

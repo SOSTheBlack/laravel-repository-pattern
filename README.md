@@ -2,8 +2,8 @@
 
 Laravel Repositories is used to abstract the data layer, making our application more flexible to maintain.
 
-[![Latest Stable Version](https://poser.pugx.org/prettus/l5-repository/v/stable)](https://packagist.org/packages/prettus/l5-repository) [![Total Downloads](https://poser.pugx.org/prettus/l5-repository/downloads)](https://packagist.org/packages/prettus/l5-repository) [![Latest Unstable Version](https://poser.pugx.org/prettus/l5-repository/v/unstable)](https://packagist.org/packages/prettus/l5-repository) [![License](https://poser.pugx.org/prettus/l5-repository/license)](https://packagist.org/packages/prettus/l5-repository)
-[![Analytics](https://ga-beacon.appspot.com/UA-61050740-1/l5-repository/readme)](https://packagist.org/packages/prettus/l5-repository)
+[![Latest Stable Version](https://poser.pugx.org/SOSTheBlack/laravel-repository-pattern/v/stable)](https://packagist.org/packages/SOSTheBlack/laravel-repository-pattern) [![Total Downloads](https://poser.pugx.org/SOSTheBlack/laravel-repository-pattern/downloads)](https://packagist.org/packages/SOSTheBlack/laravel-repository-pattern) [![Latest Unstable Version](https://poser.pugx.org/SOSTheBlack/laravel-repository-pattern/v/unstable)](https://packagist.org/packages/SOSTheBlack/laravel-repository-pattern) [![License](https://poser.pugx.org/SOSTheBlack/laravel-repository-pattern/license)](https://packagist.org/packages/SOSTheBlack/laravel-repository-pattern)
+[![Analytics](https://ga-beacon.appspot.com/UA-61050740-1/l5-repository/readme)](https://packagist.org/packages/SOSTheBlack/laravel-repository-pattern)
 [![Code Climate](https://codeclimate.com/github/SOSTheBlack/laravel-repository-pattern/badges/gpa.svg)](https://codeclimate.com/github/SOSTheBlack/laravel-repository-pattern)
 
 You want to know a little more about the Repository pattern? [Read this great article](http://bit.ly/1IdmRNS).
@@ -14,11 +14,11 @@ You want to know a little more about the Repository pattern? [Read this great ar
     - <a href="#composer">Composer</a>
     - <a href="#laravel">Laravel</a>
 - <a href="#methods">Methods</a>
-    - <a href="#prettusrepositorycontractsrepositoryinterface">RepositoryInterface</a>
-    - <a href="#prettusrepositorycontractsrepositorycriteriainterface">RepositoryCriteriaInterface</a>
-    - <a href="#prettusrepositorycontractscacheableinterface">CacheableInterface</a>
-    - <a href="#prettusrepositorycontractspresenterinterface">PresenterInterface</a>
-    - <a href="#prettusrepositorycontractscriteriainterface">CriteriaInterface</a>
+    - <a href="#sostheblackrepositorycontractsrepositoryinterface">RepositoryInterface</a>
+    - <a href="#sostheblackrepositorycontractsrepositorycriteriainterface">RepositoryCriteriaInterface</a>
+    - <a href="#sostheblackrepositorycontractscacheableinterface">CacheableInterface</a>
+    - <a href="#sostheblackrepositorycontractspresenterinterface">PresenterInterface</a>
+    - <a href="#sostheblackrepositorycontractscriteriainterface">CriteriaInterface</a>
 - <a href="#usage">Usage</a>
 	- <a href="#create-a-model">Create a Model</a>
 	- <a href="#create-a-repository">Create a Repository</a>
@@ -48,7 +48,7 @@ You want to know a little more about the Repository pattern? [Read this great ar
 Execute the following command to get the latest version of the package:
 
 ```terminal
-composer require prettus/l5-repository
+composer require SOSTheBlack/laravel-repository-pattern
 ```
 
 ### Laravel
@@ -626,7 +626,7 @@ protected $fieldSearchable = [
 
 Request all data without filter by request
 
-`http://prettus.local/users`
+`http://sostheblack.local/users`
 
 ```json
 [
@@ -656,23 +656,23 @@ Request all data without filter by request
 
 Conducting research in the repository
 
-`http://prettus.local/users?search=John%20Doe`
+`http://sostheblack.local/users?search=John%20Doe`
 
 or
 
-`http://prettus.local/users?search=John&searchFields=name:like`
+`http://sostheblack.local/users?search=John&searchFields=name:like`
 
 or
 
-`http://prettus.local/users?search=john@gmail.com&searchFields=email:=`
+`http://sostheblack.local/users?search=john@gmail.com&searchFields=email:=`
 
 or
 
-`http://prettus.local/users?search=name:John Doe;email:john@gmail.com`
+`http://sostheblack.local/users?search=name:John Doe;email:john@gmail.com`
 
 or
 
-`http://prettus.local/users?search=name:John;email:john@gmail.com&searchFields=name:like;email:=`
+`http://sostheblack.local/users?search=name:John;email:john@gmail.com&searchFields=name:like;email:=`
 
 ```json
 [
@@ -688,10 +688,10 @@ or
 
 You can use params "search" without full params "searchFields".
 
-`http://prettus.local/users?search=id:2;age:17;email:john@gmail.com&searchFields='id':=`
+`http://sostheblack.local/users?search=id:2;age:17;email:john@gmail.com&searchFields='id':=`
 
 By default RequestCriteria makes its queries using the **OR** comparison operator for each query parameter.
-`http://prettus.local/users?search=age:17;email:john@gmail.com`
+`http://sostheblack.local/users?search=age:17;email:john@gmail.com`
 
 The above example will execute the following query:
 ``` sql
@@ -700,7 +700,7 @@ SELECT * FROM users WHERE age = 17 OR email = 'john@gmail.com';
 
 In order for it to query using the **AND**, pass the *searchJoin* parameter as shown below:
 
-`http://prettus.local/users?search=age:17;email:john@gmail.com&searchJoin=and`
+`http://sostheblack.local/users?search=age:17;email:john@gmail.com&searchJoin=and`
 
 
 
@@ -708,7 +708,7 @@ In order for it to query using the **AND**, pass the *searchJoin* parameter as s
 
 Filtering fields
 
-`http://prettus.local/users?filter=id;name`
+`http://sostheblack.local/users?filter=id;name`
 
 ```json
 [
@@ -729,7 +729,7 @@ Filtering fields
 
 Sorting the results
 
-`http://prettus.local/users?filter=id;name&orderBy=id&sortedBy=desc`
+`http://sostheblack.local/users?filter=id;name&orderBy=id&sortedBy=desc`
 
 ```json
 [
@@ -750,7 +750,7 @@ Sorting the results
 
 Sorting through related tables
 
-`http://prettus.local/users?orderBy=posts|title&sortedBy=desc`
+`http://sostheblack.local/users?orderBy=posts|title&sortedBy=desc`
 
 Query will have something like this
 
@@ -762,7 +762,7 @@ ORDER BY title
 ...
 ```
 
-`http://prettus.local/users?orderBy=posts:custom_id|posts.title&sortedBy=desc`
+`http://sostheblack.local/users?orderBy=posts:custom_id|posts.title&sortedBy=desc`
 
 Query will have something like this
 
@@ -774,7 +774,7 @@ ORDER BY posts.title
 ...
 ```
 
-`http://prettus.local/users?orderBy=posts:custom_id,other_id|posts.title&sortedBy=desc`
+`http://sostheblack.local/users?orderBy=posts:custom_id,other_id|posts.title&sortedBy=desc`
 
 Query will have something like this
 
@@ -788,7 +788,7 @@ ORDER BY posts.title
 
 Sorting multiple columns same sortedBy
 
-`http://prettus.local/users?orderBy=name;created_at&sortedBy=desc`
+`http://sostheblack.local/users?orderBy=name;created_at&sortedBy=desc`
 
 Result will have something like this
 
@@ -815,7 +815,7 @@ Result will have something like this
 
 Sorting multiple columns difference sortedBy
 
-`http://prettus.local/users?orderBy=name;created_at&sortedBy=desc;asc`
+`http://sostheblack.local/users?orderBy=name;created_at&sortedBy=desc;asc`
 
 Result will have something like this
 
@@ -841,11 +841,11 @@ Result will have something like this
 
 Add relationship
 
-`http://prettus.local/users?with=groups`
+`http://sostheblack.local/users?with=groups`
 
 Between filter
 
-`http://prettus.local/product?search=price:100,500&searchFields=price:between`
+`http://sostheblack.local/product?search=price:100,500&searchFields=price:between`
 
 Result will have something like this
 
@@ -871,7 +871,7 @@ Result will have something like this
 
 WhereIn filter
 
-`http://prettus.local/product?search=price:300,500&searchFields=price:in`
+`http://sostheblack.local/product?search=price:300,500&searchFields=price:in`
 
 Result will have something like this
 
@@ -981,11 +981,11 @@ The cacheable methods are : all, paginate, find, findByField, findWhere, getByCr
 
 ### Validators
 
-Requires [prettus/laravel-validator](https://github.com/prettus/laravel-validator). `composer require prettus/laravel-validator`
+Requires [sostheblack/laravel-validator](https://github.com/sostheblack/laravel-validator). `composer require sostheblack/laravel-validator`
 
-Easy validation with `prettus/laravel-validator`
+Easy validation with `sostheblack/laravel-validator`
 
-[For more details click here](https://github.com/prettus/laravel-validator)
+[For more details click here](https://github.com/sostheblack/laravel-validator)
 
 #### Using a Validator Class
 
