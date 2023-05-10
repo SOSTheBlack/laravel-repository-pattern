@@ -3,8 +3,10 @@
 namespace SOSTheBlack\Repository\Contracts;
 
 use Closure;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\Collection;
 use Prettus\Validator\Exceptions\ValidatorException;
+use SOSTheBlack\Repository\Exceptions\RepositoryException;
 
 /**
  * Interface RepositoryInterface
@@ -214,11 +216,11 @@ interface RepositoryInterface
     /**
      * Load relations
      *
-     * @param $relations
+     * @param array|string $relations
      *
      * @return $this
      */
-    public function with($relations): static;
+    public function with(array|string $relations): static;
 
     /**
      * Load relation with closure
@@ -314,6 +316,18 @@ interface RepositoryInterface
      * @return mixed
      */
     public function firstOrCreate(array $attributes = []): mixed;
+
+    /**
+     * Delete multiple entities by given criteria.
+     *
+     * @param array $where
+     *
+     * @return int
+     *
+     * @throws BindingResolutionException
+     * @throws RepositoryException
+     */
+    public function deleteWhere(array $where): int;
 
     /**
      * Trigger method calls to the model
