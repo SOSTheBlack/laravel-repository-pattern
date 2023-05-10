@@ -8,10 +8,10 @@ use Illuminate\Support\Facades\Log;
 use SOSTheBlack\Repository\Contracts\RepositoryInterface;
 use SOSTheBlack\Repository\Events\RepositoryEventBase;
 use SOSTheBlack\Repository\Helpers\CacheKeys;
+use Throwable;
 
 /**
  * Class CleanCacheRepository
-
  * @package SOSTheBlack\Repository\Listeners
  * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
@@ -19,24 +19,24 @@ class CleanCacheRepository
 {
 
     /**
-     * @var CacheRepository
+     * @var CacheRepository|null
      */
-    protected $cache = null;
+    protected ?CacheRepository $cache = null;
 
     /**
-     * @var RepositoryInterface
+     * @var RepositoryInterface|null
      */
-    protected $repository = null;
+    protected ?RepositoryInterface $repository = null;
 
     /**
-     * @var Model
+     * @var Model|null
      */
-    protected $model = null;
+    protected ?Model $model = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    protected $action = null;
+    protected ?string $action = null;
 
     /**
      *
@@ -49,7 +49,7 @@ class CleanCacheRepository
     /**
      * @param RepositoryEventBase $event
      */
-    public function handle(RepositoryEventBase $event)
+    public function handle(RepositoryEventBase $event): void
     {
         try {
             $cleanEnabled = config("repository.cache.clean.enabled", true);
@@ -69,7 +69,7 @@ class CleanCacheRepository
                     }
                 }
             }
-        } catch (\Exception $e) {
+        } catch (Throwable $e) {
             Log::error($e->getMessage());
         }
     }
