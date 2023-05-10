@@ -2,6 +2,7 @@
 
 namespace SOSTheBlack\Repository\Criteria;
 
+use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -11,16 +12,15 @@ use SOSTheBlack\Repository\Contracts\RepositoryInterface;
 
 /**
  * Class RequestCriteria
-
  * @package SOSTheBlack\Repository\Criteria
  * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class RequestCriteria implements CriteriaInterface
 {
     /**
-     * @var \Illuminate\Http\Request
+     * @var Request
      */
-    protected $request;
+    protected Request $request;
 
     public function __construct(Request $request)
     {
@@ -35,9 +35,9 @@ class RequestCriteria implements CriteriaInterface
      * @param RepositoryInterface $repository
      *
      * @return mixed
-     * @throws \Exception
+     * @throws Exception
      */
-    public function apply($model, RepositoryInterface $repository)
+    public function apply($model, RepositoryInterface $repository): mixed
     {
         $fieldsSearchable = $repository->getFieldsSearchable();
         $search = $this->request->get(config('repository.criteria.params.search', 'search'), null);
@@ -189,7 +189,7 @@ class RequestCriteria implements CriteriaInterface
      *
      * @return array
      */
-    protected function parserSearchData($search)
+    protected function parserSearchData($search): array
     {
         $searchData = [];
 
@@ -200,7 +200,7 @@ class RequestCriteria implements CriteriaInterface
                 try {
                     list($field, $value) = explode(':', $row);
                     $searchData[$field] = $value;
-                } catch (\Exception $e) {
+                } catch (Exception $e) {
                     //Surround offset error
                 }
             }
@@ -209,7 +209,7 @@ class RequestCriteria implements CriteriaInterface
         return $searchData;
     }
 
-    protected function parserFieldsSearch(array $fields = [], array $searchFields = null, array $dataKeys = null)
+    protected function parserFieldsSearch(array $fields = [], array $searchFields = null, array $dataKeys = null): array
     {
         if (!is_null($searchFields) && count($searchFields)) {
             $acceptedConditions = config('repository.criteria.acceptedConditions', [
@@ -249,7 +249,7 @@ class RequestCriteria implements CriteriaInterface
             }
 
             if (count($fields) == 0) {
-                throw new \Exception(trans('repository::criteria.fields_not_accepted', ['field' => implode(',', $searchFields)]));
+                throw new Exception(trans('repository::criteria.fields_not_accepted', ['field' => implode(',', $searchFields)]));
             }
 
         }
@@ -264,7 +264,6 @@ class RequestCriteria implements CriteriaInterface
      */
     protected function parserSearchValue($search)
     {
-
         if (stripos($search, ';') || stripos($search, ':')) {
             $values = explode(';', $search);
             foreach ($values as $value) {
@@ -286,7 +285,7 @@ class RequestCriteria implements CriteriaInterface
      * @param $sortedBy
      * @return mixed
      */
-    protected function parserFieldsOrderBy($model, $orderBy, $sortedBy)
+    protected function parserFieldsOrderBy($model, $orderBy, $sortedBy): mixed
     {
         $split = explode('|', $orderBy);
         if (count($split) > 1) {
