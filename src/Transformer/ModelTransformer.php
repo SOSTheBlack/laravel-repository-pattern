@@ -11,7 +11,7 @@ use SOSTheBlack\Repository\Contracts\Transformable;
  */
 class ModelTransformer extends TransformerAbstract
 {
-    public function transform(Transformable $model)
+    public function transform(Transformable $model): array
     {
         return $model->transform();
     }
