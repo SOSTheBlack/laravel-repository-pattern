@@ -1,0 +1,66 @@
+{
+  "name": "sostheblack/laravel-repository-pattern",
+  "description": "Laravel 10+ - Repositories to  the database layer",
+  "keywords": [
+    "laravel",
+    "repository",
+    "eloquent",
+    "model",
+    "cache"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Anderson Andrade",
+      "homepage": "http://andersonandra.de",
+      "email": "contato@andersonandra.de",
+      "role": "Developer"
+    },
+    {
+      "name": "Jean C. Garcia",
+      "homepage": "https://github.com/SOSTheBlack",
+      "email": "garciasoftwares@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "homepage": "https://github.com/SOSTheBlack/laravel-repository-pattern",
+  "support": {
+    "email": "contato@andersonandra.de",
+    "issues":"https://github.com/SOSTheBlack/laravel-repository-pattern/issues",
+    "wiki":"https://github.com/SOSTheBlack/laravel-repository-pattern",
+    "source":"https://github.com/SOSTheBlack/laravel-repository-pattern",
+    "docs": "http://andersao.github.io/l5-repository"
+  },
+  "require": {
+    "php": "^8.1",
+    "illuminate/http": "^10.0",
+    "illuminate/config": "^10.0",
+    "illuminate/support": "^10.0",
+    "illuminate/database": "^10.0",
+    "illuminate/pagination": "^10.0",
+    "illuminate/console": "^10.0",
+    "illuminate/filesystem": "^10.0",
+    "prettus/laravel-validation": "~1.4",
+    "illuminate/validation": "^10.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "SOSTheBlack\\Repository\\": "src/"
+    }
+  },
+  "config": {
+    "preferred-install": "dist"
+  },
+  "suggest": {
+    "league/fractal": "Required to use the Fractal Presenter (0.12.*).",
+    "robclancy/presenter": "Required to use the Presenter Model (1.3.*)"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "SOSTheBlack\\Repository\\Providers\\RepositoryServiceProvider"
+      ]
+    }
+  },
+  "minimum-stability": "stable"
+}

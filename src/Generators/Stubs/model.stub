@@ -1,0 +1,25 @@
+<?php
+
+$NAMESPACE$
+
+use Illuminate\Database\Eloquent\Model;
+use SOSTheBlack\Repository\Contracts\Transformable;
+use SOSTheBlack\Repository\Traits\TransformableTrait;
+
+/**
+ * Class $CLASS$.
+ *
+ * @package $NAMESPACE$
+ */
+class $CLASS$ extends Model implements Transformable
+{
+    use TransformableTrait;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = $FILLABLE$;
+
+}
