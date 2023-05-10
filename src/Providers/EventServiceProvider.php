@@ -3,10 +3,13 @@
 namespace SOSTheBlack\Repository\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use SOSTheBlack\Repository\Events\RepositoryEntityCreated;
+use SOSTheBlack\Repository\Events\RepositoryEntityDeleted;
+use SOSTheBlack\Repository\Events\RepositoryEntityUpdated;
+use SOSTheBlack\Repository\Listeners\CleanCacheRepository;
 
 /**
  * Class EventServiceProvider
-
  * @package SOSTheBlack\Repository\Providers
  * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
@@ -19,14 +22,14 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'SOSTheBlack\Repository\Events\RepositoryEntityCreated' => [
-            'SOSTheBlack\Repository\Listeners\CleanCacheRepository'
+        RepositoryEntityCreated::class => [
+            CleanCacheRepository::class
         ],
-        'SOSTheBlack\Repository\Events\RepositoryEntityUpdated' => [
-            'SOSTheBlack\Repository\Listeners\CleanCacheRepository'
+        RepositoryEntityUpdated::class => [
+            CleanCacheRepository::class
         ],
-        'SOSTheBlack\Repository\Events\RepositoryEntityDeleted' => [
-            'SOSTheBlack\Repository\Listeners\CleanCacheRepository'
+        RepositoryEntityDeleted::class => [
+            CleanCacheRepository::class
         ]
     ];
 
@@ -35,7 +38,7 @@ class EventServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $events = app('events');
 
@@ -49,7 +52,7 @@ class EventServiceProvider extends ServiceProvider
     /**
      * {@inheritdoc}
      */
-    public function register()
+    public function register(): void
     {
         //
     }
@@ -59,7 +62,7 @@ class EventServiceProvider extends ServiceProvider
      *
      * @return array
      */
-    public function listens()
+    public function listens(): array
     {
         return $this->listen;
     }

@@ -3,10 +3,17 @@
 namespace SOSTheBlack\Repository\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use SOSTheBlack\Repository\Generators\Commands\BindingsCommand;
+use SOSTheBlack\Repository\Generators\Commands\ControllerCommand;
+use SOSTheBlack\Repository\Generators\Commands\CriteriaCommand;
+use SOSTheBlack\Repository\Generators\Commands\EntityCommand;
+use SOSTheBlack\Repository\Generators\Commands\PresenterCommand;
+use SOSTheBlack\Repository\Generators\Commands\RepositoryCommand;
+use SOSTheBlack\Repository\Generators\Commands\TransformerCommand;
+use SOSTheBlack\Repository\Generators\Commands\ValidatorCommand;
 
 /**
  * Class RepositoryServiceProvider
-
  * @package SOSTheBlack\Repository\Providers
  * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
@@ -18,22 +25,22 @@ class RepositoryServiceProvider extends ServiceProvider
      *
      * @var bool
      */
-    protected $defer = false;
+    protected bool $defer = false;
 
 
     /**
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->publishes([
-            __DIR__ . '/../../../resources/config/repository.php' => config_path('repository.php')
+            __DIR__ . '/../config/repository.php' => config_path('repository.php')
         ]);
 
-        $this->mergeConfigFrom(__DIR__ . '/../../../resources/config/repository.php', 'repository');
+        $this->mergeConfigFrom(__DIR__ . '/../config/repository.php', 'repository');
 
-        $this->loadTranslationsFrom(__DIR__ . '/../../../resources/lang', 'repository');
+        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'repository');
     }
 
 
@@ -42,17 +49,17 @@ class RepositoryServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
-        $this->commands('SOSTheBlack\Repository\Generators\Commands\RepositoryCommand');
-        $this->commands('SOSTheBlack\Repository\Generators\Commands\TransformerCommand');
-        $this->commands('SOSTheBlack\Repository\Generators\Commands\PresenterCommand');
-        $this->commands('SOSTheBlack\Repository\Generators\Commands\EntityCommand');
-        $this->commands('SOSTheBlack\Repository\Generators\Commands\ValidatorCommand');
-        $this->commands('SOSTheBlack\Repository\Generators\Commands\ControllerCommand');
-        $this->commands('SOSTheBlack\Repository\Generators\Commands\BindingsCommand');
-        $this->commands('SOSTheBlack\Repository\Generators\Commands\CriteriaCommand');
-        $this->app->register('SOSTheBlack\Repository\Providers\EventServiceProvider');
+        $this->commands(RepositoryCommand::class);
+        $this->commands(TransformerCommand::class);
+        $this->commands(PresenterCommand::class);
+        $this->commands(EntityCommand::class);
+        $this->commands(ValidatorCommand::class);
+        $this->commands(ControllerCommand::class);
+        $this->commands(BindingsCommand::class);
+        $this->commands(CriteriaCommand::class);
+        $this->app->register(EventServiceProvider::class);
     }
 
 
@@ -61,7 +68,7 @@ class RepositoryServiceProvider extends ServiceProvider
      *
      * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return [];
     }

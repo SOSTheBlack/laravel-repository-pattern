@@ -3,10 +3,10 @@
 namespace SOSTheBlack\Repository\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use SOSTheBlack\Repository\Generators\Commands\RepositoryCommand;
 
 /**
  * Class LumenRepositoryServiceProvider
-
  * @package SOSTheBlack\Repository\Providers
  * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
@@ -17,17 +17,17 @@ class LumenRepositoryServiceProvider extends ServiceProvider
      *
      * @var bool
      */
-    protected $defer = false;
+    protected bool $defer = false;
 
     /**
      * Register the service provider.
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
-        $this->commands('SOSTheBlack\Repository\Generators\Commands\RepositoryCommand');
-        $this->app->register('SOSTheBlack\Repository\Providers\EventServiceProvider');
+        $this->commands(RepositoryCommand::class);
+        $this->app->register(EventServiceProvider::class);
     }
 
     /**
@@ -35,7 +35,7 @@ class LumenRepositoryServiceProvider extends ServiceProvider
      *
      * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return [];
     }

@@ -3,6 +3,7 @@
 namespace SOSTheBlack\Repository\Presenter;
 
 use Exception;
+use League\Fractal\TransformerAbstract;
 use SOSTheBlack\Repository\Transformer\ModelTransformer;
 
 /**
@@ -18,9 +19,10 @@ class ModelFractalPresenter extends FractalPresenter
      * Transformer
      *
      * @return ModelTransformer
+     *
      * @throws Exception
      */
-    public function getTransformer()
+    public function getTransformer(): TransformerAbstract
     {
         if (!class_exists('League\Fractal\Manager')) {
             throw new Exception("Package required. Please install: 'composer require league/fractal' (0.12.*)");
