@@ -1,12 +1,14 @@
 <?php
+
 namespace SOSTheBlack\Repository\Generators;
 
 use Illuminate\Support\Str;
 
 /**
  * Class ControllerGenerator
+
  * @package SOSTheBlack\Repository\Generators
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class ControllerGenerator extends Generator
 {
@@ -17,26 +19,6 @@ class ControllerGenerator extends Generator
      * @var string
      */
     protected $stub = 'controller/controller';
-
-    /**
-     * Get root namespace.
-     *
-     * @return string
-     */
-    public function getRootNamespace()
-    {
-        return str_replace('/', '\\', parent::getRootNamespace() . parent::getConfigGeneratorClassPath($this->getPathConfigNode()));
-    }
-
-    /**
-     * Get generator path config node.
-     *
-     * @return string
-     */
-    public function getPathConfigNode()
-    {
-        return 'controllers';
-    }
 
     /**
      * Get destination path for generated file.
@@ -90,11 +72,11 @@ class ControllerGenerator extends Generator
 
         return array_merge(parent::getReplacements(), [
             'controller' => $this->getControllerName(),
-            'plural'     => $this->getPluralName(),
-            'singular'   => $this->getSingularName(),
-            'validator'  => $this->getValidator(),
+            'plural' => $this->getPluralName(),
+            'singular' => $this->getSingularName(),
+            'validator' => $this->getValidator(),
             'repository' => $this->getRepository(),
-            'appname'    => $this->getAppNamespace(),
+            'appname' => $this->getAppNamespace(),
         ]);
     }
 
@@ -122,11 +104,30 @@ class ControllerGenerator extends Generator
         $validator = $validatorGenerator->getRootNamespace() . '\\' . $validatorGenerator->getName();
 
         return 'use ' . str_replace([
-            "\\",
-            '/'
-        ], '\\', $validator) . 'Validator;';
+                "\\",
+                '/'
+            ], '\\', $validator) . 'Validator;';
     }
 
+    /**
+     * Get root namespace.
+     *
+     * @return string
+     */
+    public function getRootNamespace()
+    {
+        return str_replace('/', '\\', parent::getRootNamespace() . parent::getConfigGeneratorClassPath($this->getPathConfigNode()));
+    }
+
+    /**
+     * Get generator path config node.
+     *
+     * @return string
+     */
+    public function getPathConfigNode()
+    {
+        return 'controllers';
+    }
 
     /**
      * Gets repository full class name
@@ -142,8 +143,8 @@ class ControllerGenerator extends Generator
         $repository = $repositoryGenerator->getRootNamespace() . '\\' . $repositoryGenerator->getName();
 
         return 'use ' . str_replace([
-            "\\",
-            '/'
-        ], '\\', $repository) . 'Repository;';
+                "\\",
+                '/'
+            ], '\\', $repository) . 'Repository;';
     }
 }

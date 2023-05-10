@@ -1,4 +1,5 @@
 <?php
+
 namespace SOSTheBlack\Repository\Presenter;
 
 use Exception;
@@ -6,8 +7,9 @@ use SOSTheBlack\Repository\Transformer\ModelTransformer;
 
 /**
  * Class ModelFractalPresenter
+
  * @package SOSTheBlack\Repository\Presenter
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class ModelFractalPresenter extends FractalPresenter
 {

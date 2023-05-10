@@ -10,8 +10,9 @@ use Symfony\Component\Console\Input\InputOption;
 
 /**
  * Class CriteriaCommand
+
  * @package SOSTheBlack\Repository\Generators\Commands
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class CriteriaCommand extends Command
 {
@@ -39,10 +40,11 @@ class CriteriaCommand extends Command
     /**
      * Execute the command.
      *
-     * @see fire()
      * @return void
+     * @see fire()
      */
-    public function handle(){
+    public function handle()
+    {
         $this->laravel->call([$this, 'fire'], func_get_args());
     }
 

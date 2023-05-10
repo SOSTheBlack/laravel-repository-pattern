@@ -1,8 +1,8 @@
 <?php
+
 namespace SOSTheBlack\Repository\Generators\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Collection;
 use SOSTheBlack\Repository\Generators\ControllerGenerator;
 use SOSTheBlack\Repository\Generators\FileAlreadyExistsException;
 use Symfony\Component\Console\Input\InputArgument;
@@ -10,8 +10,9 @@ use Symfony\Component\Console\Input\InputOption;
 
 /**
  * Class ControllerCommand
+
  * @package SOSTheBlack\Repository\Generators\Commands
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class ControllerCommand extends Command
 {
@@ -42,17 +43,18 @@ class ControllerCommand extends Command
      */
     public function __construct()
     {
-        $this->name = ((float) app()->version() >= 5.5  ? 'make:rest-controller' : 'make:resource');
+        $this->name = ((float)app()->version() >= 5.5 ? 'make:rest-controller' : 'make:resource');
         parent::__construct();
     }
 
     /**
      * Execute the command.
      *
-     * @see fire()
      * @return void
+     * @see fire()
      */
-    public function handle(){
+    public function handle()
+    {
         $this->laravel->call([$this, 'fire'], func_get_args());
     }
 

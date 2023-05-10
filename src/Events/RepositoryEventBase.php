@@ -1,4 +1,5 @@
 <?php
+
 namespace SOSTheBlack\Repository\Events;
 
 use Illuminate\Database\Eloquent\Model;
@@ -6,8 +7,9 @@ use SOSTheBlack\Repository\Contracts\RepositoryInterface;
 
 /**
  * Class RepositoryEventBase
+
  * @package SOSTheBlack\Repository\Events
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 abstract class RepositoryEventBase
 {
@@ -28,7 +30,7 @@ abstract class RepositoryEventBase
 
     /**
      * @param RepositoryInterface $repository
-     * @param Model               $model
+     * @param Model $model
      */
     public function __construct(RepositoryInterface $repository, Model $model = null)
     {

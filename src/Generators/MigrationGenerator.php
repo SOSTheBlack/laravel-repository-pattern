@@ -8,8 +8,9 @@ use Symfony\Component\HttpFoundation\File\Exception\FileNotFoundException;
 
 /**
  * Class MigrationGenerator
+
  * @package SOSTheBlack\Repository\Generators
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class MigrationGenerator extends Generator
 {
@@ -21,6 +22,15 @@ class MigrationGenerator extends Generator
      */
     protected $stub = 'migration/plain';
 
+    /**
+     * Get destination path for generated file.
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->getBasePath() . $this->getFileName() . '.php';
+    }
 
     /**
      * Get base path of destination file.
@@ -32,39 +42,15 @@ class MigrationGenerator extends Generator
         return base_path() . '/database/migrations/';
     }
 
-
     /**
-     * Get destination path for generated file.
+     * Get file name.
      *
      * @return string
      */
-    public function getPath()
+    public function getFileName()
     {
-        return $this->getBasePath() . $this->getFileName() . '.php';
+        return date('Y_m_d_His_') . $this->getMigrationName();
     }
-
-
-    /**
-     * Get generator path config node.
-     *
-     * @return string
-     */
-    public function getPathConfigNode()
-    {
-        return '';
-    }
-
-
-    /**
-     * Get root namespace.
-     *
-     * @return string
-     */
-    public function getRootNamespace()
-    {
-        return '';
-    }
-
 
     /**
      * Get migration name.
@@ -76,39 +62,25 @@ class MigrationGenerator extends Generator
         return strtolower($this->name);
     }
 
-
     /**
-     * Get file name.
+     * Get generator path config node.
      *
      * @return string
      */
-    public function getFileName()
+    public function getPathConfigNode()
     {
-        return date('Y_m_d_His_') . $this->getMigrationName();
+        return '';
     }
-
 
     /**
-     * Get schema parser.
+     * Get root namespace.
      *
-     * @return SchemaParser
+     * @return string
      */
-    public function getSchemaParser()
+    public function getRootNamespace()
     {
-        return new SchemaParser($this->fields);
+        return '';
     }
-
-
-    /**
-     * Get name parser.
-     *
-     * @return NameParser
-     */
-    public function getNameParser()
-    {
-        return new NameParser($this->name);
-    }
-
 
     /**
      * Get stub templates.
@@ -127,9 +99,9 @@ class MigrationGenerator extends Generator
             case 'insert':
                 $file = 'change';
                 $replacements = [
-                    'class'       => $this->getClass(),
-                    'table'       => $parser->getTable(),
-                    'fields_up'   => $this->getSchemaParser()->up(),
+                    'class' => $this->getClass(),
+                    'table' => $parser->getTable(),
+                    'fields_up' => $this->getSchemaParser()->up(),
                     'fields_down' => $this->getSchemaParser()->down(),
                 ];
                 break;
@@ -139,17 +111,17 @@ class MigrationGenerator extends Generator
             case 'alter':
                 $file = 'change';
                 $replacements = [
-                    'class'       => $this->getClass(),
-                    'table'       => $parser->getTable(),
+                    'class' => $this->getClass(),
+                    'table' => $parser->getTable(),
                     'fields_down' => $this->getSchemaParser()->up(),
-                    'fields_up'   => $this->getSchemaParser()->down(),
+                    'fields_up' => $this->getSchemaParser()->down(),
                 ];
                 break;
             default:
                 $file = 'create';
                 $replacements = [
-                    'class'  => $this->getClass(),
-                    'table'  => $parser->getTable(),
+                    'class' => $this->getClass(),
+                    'table' => $parser->getTable(),
                     'fields' => $this->getSchemaParser()->up(),
                 ];
                 break;
@@ -165,5 +137,25 @@ class MigrationGenerator extends Generator
         }
 
         return Stub::create($path . "/Stubs/migration/{$file}.stub", $replacements);
+    }
+
+    /**
+     * Get name parser.
+     *
+     * @return NameParser
+     */
+    public function getNameParser()
+    {
+        return new NameParser($this->name);
+    }
+
+    /**
+     * Get schema parser.
+     *
+     * @return SchemaParser
+     */
+    public function getSchemaParser()
+    {
+        return new SchemaParser($this->fields);
     }
 }

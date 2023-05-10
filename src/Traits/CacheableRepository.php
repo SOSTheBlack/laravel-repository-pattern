@@ -10,8 +10,9 @@ use SOSTheBlack\Repository\Helpers\CacheKeys;
 
 /**
  * Class CacheableRepository
+
  * @package SOSTheBlack\Repository\Traits
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 trait CacheableRepository
 {
@@ -20,34 +21,6 @@ trait CacheableRepository
      * @var CacheRepository
      */
     protected $cacheRepository = null;
-
-    /**
-     * Set Cache Repository
-     *
-     * @param CacheRepository $repository
-     *
-     * @return $this
-     */
-    public function setCacheRepository(CacheRepository $repository)
-    {
-        $this->cacheRepository = $repository;
-
-        return $this;
-    }
-
-    /**
-     * Return instance of Cache Repository
-     *
-     * @return CacheRepository
-     */
-    public function getCacheRepository()
-    {
-        if (is_null($this->cacheRepository)) {
-            $this->cacheRepository = app(config('repository.cache.repository', 'cache'));
-        }
-
-        return $this->cacheRepository;
-    }
 
     /**
      * Skip Cache
@@ -64,19 +37,27 @@ trait CacheableRepository
     }
 
     /**
-     * @return bool
+     * Retrieve all data of repository
+     *
+     * @param array $columns
+     *
+     * @return mixed
      */
-    public function isSkippedCache()
+    public function all($columns = ['*'])
     {
-        $skipped = isset($this->cacheSkip) ? $this->cacheSkip : false;
-        $request = app('Illuminate\Http\Request');
-        $skipCacheParam = config('repository.cache.params.skipCache', 'skipCache');
-
-        if ($request->has($skipCacheParam) && $request->get($skipCacheParam)) {
-            $skipped = true;
+        if (!$this->allowedCache('all') || $this->isSkippedCache()) {
+            return parent::all($columns);
         }
 
-        return $skipped;
+        $key = $this->getCacheKey('all', func_get_args());
+        $time = $this->getCacheTime();
+        $value = $this->getCacheRepository()->remember($key, $time, function () use ($columns) {
+            return parent::all($columns);
+        });
+
+        $this->resetModel();
+        $this->resetScope();
+        return $value;
     }
 
     /**
@@ -108,6 +89,22 @@ trait CacheableRepository
         }
 
         return false;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isSkippedCache()
+    {
+        $skipped = isset($this->cacheSkip) ? $this->cacheSkip : false;
+        $request = app('Illuminate\Http\Request');
+        $skipCacheParam = config('repository.cache.params.skipCache', 'skipCache');
+
+        if ($request->has($skipCacheParam) && $request->get($skipCacheParam)) {
+            $skipped = true;
+        }
+
+        return $skipped;
     }
 
     /**
@@ -151,7 +148,7 @@ trait CacheableRepository
     /**
      * Serialize single criterion with customized serialization of Closures.
      *
-     * @param  \SOSTheBlack\Repository\Contracts\CriteriaInterface $criterion
+     * @param \SOSTheBlack\Repository\Contracts\CriteriaInterface $criterion
      * @return \SOSTheBlack\Repository\Contracts\CriteriaInterface|array
      *
      * @throws \Exception
@@ -172,7 +169,7 @@ trait CacheableRepository
             $r = new ReflectionObject($criterion);
 
             return [
-                'hash' => md5((string) $r),
+                'hash' => md5((string)$r),
             ];
         }
     }
@@ -200,33 +197,37 @@ trait CacheableRepository
     }
 
     /**
-     * Retrieve all data of repository
+     * Return instance of Cache Repository
      *
-     * @param array $columns
-     *
-     * @return mixed
+     * @return CacheRepository
      */
-    public function all($columns = ['*'])
+    public function getCacheRepository()
     {
-        if (!$this->allowedCache('all') || $this->isSkippedCache()) {
-            return parent::all($columns);
+        if (is_null($this->cacheRepository)) {
+            $this->cacheRepository = app(config('repository.cache.repository', 'cache'));
         }
 
-        $key = $this->getCacheKey('all', func_get_args());
-        $time = $this->getCacheTime();
-        $value = $this->getCacheRepository()->remember($key, $time, function () use ($columns) {
-            return parent::all($columns);
-        });
+        return $this->cacheRepository;
+    }
 
-        $this->resetModel();
-        $this->resetScope();
-        return $value;
+    /**
+     * Set Cache Repository
+     *
+     * @param CacheRepository $repository
+     *
+     * @return $this
+     */
+    public function setCacheRepository(CacheRepository $repository)
+    {
+        $this->cacheRepository = $repository;
+
+        return $this;
     }
 
     /**
      * Retrieve all data of repository, paginated
      *
-     * @param null  $limit
+     * @param null $limit
      * @param array $columns
      * @param string $method
      *

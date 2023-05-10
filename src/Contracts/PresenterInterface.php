@@ -1,10 +1,12 @@
 <?php
+
 namespace SOSTheBlack\Repository\Contracts;
 
 /**
  * Interface PresenterInterface
+
  * @package SOSTheBlack\Repository\Contracts
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 interface PresenterInterface
 {
@@ -15,5 +17,5 @@ interface PresenterInterface
      *
      * @return mixed
      */
-    public function present($data);
+    public function present($data): mixed;
 }

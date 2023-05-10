@@ -1,10 +1,12 @@
 <?php
+
 namespace SOSTheBlack\Repository\Generators;
 
 /**
  * Class TransformerGenerator
+
  * @package SOSTheBlack\Repository\Generators
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class TransformerGenerator extends Generator
 {
@@ -14,26 +16,6 @@ class TransformerGenerator extends Generator
      * @var string
      */
     protected $stub = 'transformer/transformer';
-
-    /**
-     * Get root namespace.
-     *
-     * @return string
-     */
-    public function getRootNamespace()
-    {
-        return parent::getRootNamespace() . parent::getConfigGeneratorClassPath($this->getPathConfigNode());
-    }
-
-    /**
-     * Get generator path config node.
-     *
-     * @return string
-     */
-    public function getPathConfigNode()
-    {
-        return 'transformers';
-    }
 
     /**
      * Get destination path for generated file.
@@ -56,6 +38,16 @@ class TransformerGenerator extends Generator
     }
 
     /**
+     * Get generator path config node.
+     *
+     * @return string
+     */
+    public function getPathConfigNode()
+    {
+        return 'transformers';
+    }
+
+    /**
      * Get array replacements.
      *
      * @return array
@@ -74,5 +66,15 @@ class TransformerGenerator extends Generator
         return array_merge(parent::getReplacements(), [
             'model' => $model
         ]);
+    }
+
+    /**
+     * Get root namespace.
+     *
+     * @return string
+     */
+    public function getRootNamespace()
+    {
+        return parent::getRootNamespace() . parent::getConfigGeneratorClassPath($this->getPathConfigNode());
     }
 }

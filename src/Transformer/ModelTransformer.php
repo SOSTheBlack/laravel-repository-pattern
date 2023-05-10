@@ -5,8 +5,9 @@ use SOSTheBlack\Repository\Contracts\Transformable;
 
 /**
  * Class ModelTransformer
+
  * @package SOSTheBlack\Repository\Transformer
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class ModelTransformer extends TransformerAbstract
 {

@@ -4,8 +4,9 @@ namespace SOSTheBlack\Repository\Traits;
 
 /**
  * Class TransformableTrait
+
  * @package SOSTheBlack\Repository\Traits
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 trait TransformableTrait
 {

@@ -6,8 +6,9 @@ use SOSTheBlack\Repository\Generators\Migrations\SchemaParser;
 
 /**
  * Class RepositoryInterfaceGenerator
+
  * @package SOSTheBlack\Repository\Generators
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class RepositoryInterfaceGenerator extends Generator
 {

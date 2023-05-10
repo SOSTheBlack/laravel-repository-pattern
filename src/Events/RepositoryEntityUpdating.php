@@ -1,10 +1,12 @@
 <?php
+
 namespace SOSTheBlack\Repository\Events;
 
 /**
  * Class RepositoryEntityUpdated
+
  * @package SOSTheBlack\Repository\Events
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class RepositoryEntityUpdating extends RepositoryEventBase
 {

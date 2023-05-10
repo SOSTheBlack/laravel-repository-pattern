@@ -1,10 +1,12 @@
 <?php
+
 namespace SOSTheBlack\Repository\Generators;
 
 /**
  * Class BindingsGenerator
+
  * @package SOSTheBlack\Repository\Generators
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class BindingsGenerator extends Generator
 {
@@ -77,9 +79,19 @@ class BindingsGenerator extends Generator
         $repository = $repositoryGenerator->getRootNamespace() . '\\' . $repositoryGenerator->getName();
 
         return str_replace([
-            "\\",
-            '/'
-        ], '\\', $repository) . 'Repository';
+                "\\",
+                '/'
+            ], '\\', $repository) . 'Repository';
+    }
+
+    /**
+     * Get root namespace.
+     *
+     * @return string
+     */
+    public function getRootNamespace()
+    {
+        return parent::getRootNamespace() . parent::getConfigGeneratorClassPath($this->getPathConfigNode());
     }
 
     /**
@@ -96,19 +108,9 @@ class BindingsGenerator extends Generator
         $repository = $repositoryGenerator->getRootNamespace() . '\\' . $repositoryGenerator->getName();
 
         return str_replace([
-            "\\",
-            '/'
-        ], '\\', $repository) . 'RepositoryEloquent';
-    }
-
-    /**
-     * Get root namespace.
-     *
-     * @return string
-     */
-    public function getRootNamespace()
-    {
-        return parent::getRootNamespace() . parent::getConfigGeneratorClassPath($this->getPathConfigNode());
+                "\\",
+                '/'
+            ], '\\', $repository) . 'RepositoryEloquent';
     }
 
     /**

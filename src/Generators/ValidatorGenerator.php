@@ -1,4 +1,5 @@
 <?php
+
 namespace SOSTheBlack\Repository\Generators;
 
 use SOSTheBlack\Repository\Generators\Migrations\RulesParser;
@@ -6,8 +7,9 @@ use SOSTheBlack\Repository\Generators\Migrations\SchemaParser;
 
 /**
  * Class ValidatorGenerator
+
  * @package SOSTheBlack\Repository\Generators
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class ValidatorGenerator extends Generator
 {

@@ -7,8 +7,10 @@ use SOSTheBlack\Repository\Contracts\PresenterInterface;
 
 /**
  * Class PresentableTrait
+
+
  * @package SOSTheBlack\Repository\Traits
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 trait PresentableTrait
 {

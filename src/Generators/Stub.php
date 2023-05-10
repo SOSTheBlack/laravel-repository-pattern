@@ -4,8 +4,9 @@ namespace SOSTheBlack\Repository\Generators;
 
 /**
  * Class Stub
+
  * @package SOSTheBlack\Repository\Generators
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class Stub
 {
@@ -32,7 +33,7 @@ class Stub
      * The contructor.
      *
      * @param string $path
-     * @param array  $replaces
+     * @param array $replaces
      */
     public function __construct($path, array $replaces = [])
     {
@@ -43,8 +44,8 @@ class Stub
     /**
      * Create new self instance.
      *
-     * @param  string $path
-     * @param  array  $replaces
+     * @param string $path
+     * @param array $replaces
      *
      * @return self
      */
@@ -56,7 +57,7 @@ class Stub
     /**
      * Set base path.
      *
-     * @param  string $path
+     * @param string $path
      *
      * @return void
      */
@@ -68,7 +69,7 @@ class Stub
     /**
      * Set replacements array.
      *
-     * @param  array $replaces
+     * @param array $replaces
      *
      * @return $this
      */

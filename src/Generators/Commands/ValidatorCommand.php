@@ -1,8 +1,8 @@
 <?php
+
 namespace SOSTheBlack\Repository\Generators\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Collection;
 use SOSTheBlack\Repository\Generators\FileAlreadyExistsException;
 use SOSTheBlack\Repository\Generators\ValidatorGenerator;
 use Symfony\Component\Console\Input\InputArgument;
@@ -10,6 +10,7 @@ use Symfony\Component\Console\Input\InputOption;
 
 /**
  * Class ValidatorCommand
+
  * @package SOSTheBlack\Repository\Generators\Commands
  */
 class ValidatorCommand extends Command
@@ -40,10 +41,11 @@ class ValidatorCommand extends Command
     /**
      * Execute the command.
      *
-     * @see fire()
      * @return void
+     * @see fire()
      */
-    public function handle(){
+    public function handle()
+    {
         $this->laravel->call([$this, 'fire'], func_get_args());
     }
 

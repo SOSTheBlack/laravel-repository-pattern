@@ -1,4 +1,5 @@
 <?php
+
 namespace SOSTheBlack\Repository\Contracts;
 
 use Illuminate\Support\Collection;
@@ -6,8 +7,9 @@ use Illuminate\Support\Collection;
 
 /**
  * Interface RepositoryCriteriaInterface
+
  * @package SOSTheBlack\Repository\Contracts
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 interface RepositoryCriteriaInterface
 {
@@ -19,7 +21,7 @@ interface RepositoryCriteriaInterface
      *
      * @return $this
      */
-    public function pushCriteria($criteria);
+    public function pushCriteria($criteria): static;
 
     /**
      * Pop Criteria
@@ -28,14 +30,14 @@ interface RepositoryCriteriaInterface
      *
      * @return $this
      */
-    public function popCriteria($criteria);
+    public function popCriteria($criteria): static;
 
     /**
      * Get Collection of Criteria
      *
      * @return Collection
      */
-    public function getCriteria();
+    public function getCriteria(): Collection;
 
     /**
      * Find data by Criteria
@@ -44,7 +46,7 @@ interface RepositoryCriteriaInterface
      *
      * @return mixed
      */
-    public function getByCriteria(CriteriaInterface $criteria);
+    public function getByCriteria(CriteriaInterface $criteria): mixed;
 
     /**
      * Skip Criteria
@@ -53,12 +55,12 @@ interface RepositoryCriteriaInterface
      *
      * @return $this
      */
-    public function skipCriteria($status = true);
+    public function skipCriteria($status = true): static;
 
     /**
      * Reset all Criterias
      *
      * @return $this
      */
-    public function resetCriteria();
+    public function resetCriteria(): static;
 }

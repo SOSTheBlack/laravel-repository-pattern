@@ -1,10 +1,12 @@
 <?php
+
 namespace SOSTheBlack\Repository\Contracts;
 
 /**
  * Interface CriteriaInterface
+
  * @package SOSTheBlack\Repository\Contracts
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 interface CriteriaInterface
 {
@@ -16,5 +18,5 @@ interface CriteriaInterface
      *
      * @return mixed
      */
-    public function apply($model, RepositoryInterface $repository);
+    public function apply($model, RepositoryInterface $repository): mixed;
 }

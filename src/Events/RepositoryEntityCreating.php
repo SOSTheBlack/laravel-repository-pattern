@@ -7,8 +7,9 @@ use SOSTheBlack\Repository\Contracts\RepositoryInterface;
 /**
  * Class RepositoryEntityCreated
  *
+
  * @package SOSTheBlack\Repository\Events
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class RepositoryEntityCreating extends RepositoryEventBase
 {

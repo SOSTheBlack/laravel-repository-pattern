@@ -1,10 +1,12 @@
 <?php
+
 namespace SOSTheBlack\Repository\Generators;
 
 /**
  * Class PresenterGenerator
+
  * @package SOSTheBlack\Repository\Generators
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class PresenterGenerator extends Generator
 {
@@ -14,26 +16,6 @@ class PresenterGenerator extends Generator
      * @var string
      */
     protected $stub = 'presenter/presenter';
-
-    /**
-     * Get root namespace.
-     *
-     * @return string
-     */
-    public function getRootNamespace()
-    {
-        return parent::getRootNamespace() . parent::getConfigGeneratorClassPath($this->getPathConfigNode());
-    }
-
-    /**
-     * Get generator path config node.
-     *
-     * @return string
-     */
-    public function getPathConfigNode()
-    {
-        return 'presenters';
-    }
 
     /**
      * Get array replacements.
@@ -55,6 +37,26 @@ class PresenterGenerator extends Generator
         return array_merge(parent::getReplacements(), [
             'transformer' => $transformer
         ]);
+    }
+
+    /**
+     * Get root namespace.
+     *
+     * @return string
+     */
+    public function getRootNamespace()
+    {
+        return parent::getRootNamespace() . parent::getConfigGeneratorClassPath($this->getPathConfigNode());
+    }
+
+    /**
+     * Get generator path config node.
+     *
+     * @return string
+     */
+    public function getPathConfigNode()
+    {
+        return 'presenters';
     }
 
     /**

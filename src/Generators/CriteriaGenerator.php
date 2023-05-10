@@ -4,8 +4,9 @@ namespace SOSTheBlack\Repository\Generators;
 
 /**
  * Class CriteriaGenerator
+
  * @package SOSTheBlack\Repository\Generators
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class CriteriaGenerator extends Generator
 {

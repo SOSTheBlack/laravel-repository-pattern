@@ -11,8 +11,9 @@ use SOSTheBlack\Repository\Helpers\CacheKeys;
 
 /**
  * Class CleanCacheRepository
+
  * @package SOSTheBlack\Repository\Listeners
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class CleanCacheRepository
 {

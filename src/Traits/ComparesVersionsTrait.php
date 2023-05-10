@@ -1,19 +1,21 @@
 <?php
+
 namespace SOSTheBlack\Repository\Traits;
 
 /**
  * Trait ComparesVersionsTrait
+
  * @package SOSTheBlack\Repository\Traits
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 trait ComparesVersionsTrait
 {
     /**
      * Version compare function that can compare both Laravel and Lumen versions.
      *
-     * @param   string      $frameworkVersion
-     * @param   string      $compareVersion
-     * @param   string|null $operator
+     * @param string $frameworkVersion
+     * @param string $compareVersion
+     * @param string|null $operator
      * @return  mixed
      */
     public function versionCompare($frameworkVersion, $compareVersion, $operator = null)

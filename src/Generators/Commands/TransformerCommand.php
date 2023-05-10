@@ -1,8 +1,8 @@
 <?php
+
 namespace SOSTheBlack\Repository\Generators\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Collection;
 use SOSTheBlack\Repository\Generators\FileAlreadyExistsException;
 use SOSTheBlack\Repository\Generators\TransformerGenerator;
 use Symfony\Component\Console\Input\InputArgument;
@@ -10,8 +10,9 @@ use Symfony\Component\Console\Input\InputOption;
 
 /**
  * Class TransformerCommand
+
  * @package SOSTheBlack\Repository\Generators\Commands
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class TransformerCommand extends Command
 {
@@ -40,10 +41,11 @@ class TransformerCommand extends Command
     /**
      * Execute the command.
      *
-     * @see fire()
      * @return void
+     * @see fire()
      */
-    public function handle(){
+    public function handle()
+    {
         $this->laravel->call([$this, 'fire'], func_get_args());
     }
 

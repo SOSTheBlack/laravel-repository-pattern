@@ -1,10 +1,12 @@
 <?php
+
 namespace SOSTheBlack\Repository\Generators\Migrations;
 
 /**
  * Class NameParser
+
  * @package SOSTheBlack\Repository\Generators\Migrations
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class NameParser
 {
@@ -34,13 +36,13 @@ class NameParser
             'delete',
             'remove'
         ],
-        'add'    => [
+        'add' => [
             'add',
             'update',
             'append',
             'insert'
         ],
-        'drop'   => [
+        'drop' => [
             'destroy',
             'drop'
         ]

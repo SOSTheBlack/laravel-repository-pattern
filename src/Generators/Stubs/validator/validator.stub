@@ -8,6 +8,7 @@ use \Prettus\Validator\LaravelValidator;
 /**
  * Class $CLASS$Validator.
  *
+
  * @package $NAMESPACE$
  */
 class $CLASS$Validator extends LaravelValidator

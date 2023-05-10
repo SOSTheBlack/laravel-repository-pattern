@@ -1,4 +1,5 @@
 <?php
+
 namespace SOSTheBlack\Repository\Generators\Commands;
 
 use Illuminate\Console\Command;
@@ -14,8 +15,9 @@ use Symfony\Component\Console\Input\InputOption;
 
 /**
  * Class RepositoryCommand
+
  * @package SOSTheBlack\Repository\Generators\Commands
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class RepositoryCommand extends Command
 {
@@ -50,10 +52,11 @@ class RepositoryCommand extends Command
     /**
      * Execute the command.
      *
-     * @see fire()
      * @return void
+     * @see fire()
      */
-    public function handle(){
+    public function handle()
+    {
         $this->laravel->call([$this, 'fire'], func_get_args());
     }
 
@@ -67,9 +70,9 @@ class RepositoryCommand extends Command
         $this->generators = new Collection();
 
         $migrationGenerator = new MigrationGenerator([
-            'name'   => 'create_' . Str::snake(Str::plural($this->argument('name'))) . '_table',
+            'name' => 'create_' . Str::snake(Str::plural($this->argument('name'))) . '_table',
             'fields' => $this->option('fillable'),
-            'force'  => $this->option('force'),
+            'force' => $this->option('force'),
         ]);
 
         if (!$this->option('skip-migration')) {
@@ -77,9 +80,9 @@ class RepositoryCommand extends Command
         }
 
         $modelGenerator = new ModelGenerator([
-            'name'     => $this->argument('name'),
+            'name' => $this->argument('name'),
             'fillable' => $this->option('fillable'),
-            'force'    => $this->option('force')
+            'force' => $this->option('force')
         ]);
 
         if (!$this->option('skip-model')) {
@@ -87,7 +90,7 @@ class RepositoryCommand extends Command
         }
 
         $this->generators->push(new RepositoryInterfaceGenerator([
-            'name'  => $this->argument('name'),
+            'name' => $this->argument('name'),
             'force' => $this->option('force'),
         ]));
 
@@ -103,11 +106,11 @@ class RepositoryCommand extends Command
 
         try {
             (new RepositoryEloquentGenerator([
-                'name'      => $this->argument('name'),
-                'rules'     => $this->option('rules'),
+                'name' => $this->argument('name'),
+                'rules' => $this->option('rules'),
                 'validator' => $this->option('validator'),
-                'force'     => $this->option('force'),
-                'model'     => $model
+                'force' => $this->option('force'),
+                'model' => $model
             ]))->run();
             $this->info("Repository created successfully.");
         } catch (FileAlreadyExistsException $e) {

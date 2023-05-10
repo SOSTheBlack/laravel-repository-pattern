@@ -1,4 +1,5 @@
 <?php
+
 namespace SOSTheBlack\Repository\Generators\Migrations;
 
 use Illuminate\Contracts\Support\Arrayable;
@@ -7,8 +8,9 @@ use Illuminate\Support\Str;
 
 /**
  * Class SchemaParser
+
  * @package SOSTheBlack\Repository\Generators\Migrations
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class SchemaParser implements Arrayable
 {
@@ -19,7 +21,7 @@ class SchemaParser implements Arrayable
      */
     protected $customAttributes = [
         'remember_token' => 'rememberToken()',
-        'soft_delete'    => 'softDeletes()',
+        'soft_delete' => 'softDeletes()',
     ];
     /**
      * The migration schema.
@@ -76,7 +78,7 @@ class SchemaParser implements Arrayable
     /**
      * Parse a string to array of formatted schema.
      *
-     * @param  string $schema
+     * @param string $schema
      *
      * @return array
      */
@@ -110,7 +112,7 @@ class SchemaParser implements Arrayable
     /**
      * Get column name from schema.
      *
-     * @param  string $schema
+     * @param string $schema
      *
      * @return string
      */
@@ -124,8 +126,8 @@ class SchemaParser implements Arrayable
     /**
      * Get column attributes.
      *
-     * @param  string $column
-     * @param  string $schema
+     * @param string $column
+     * @param string $schema
      *
      * @return array
      */
@@ -139,7 +141,7 @@ class SchemaParser implements Arrayable
     /**
      * Determinte whether the given column is exist in customAttributes array.
      *
-     * @param  string $column
+     * @param string $column
      *
      * @return boolean
      */
@@ -151,7 +153,7 @@ class SchemaParser implements Arrayable
     /**
      * Get custom attributes value.
      *
-     * @param  string $column
+     * @param string $column
      *
      * @return array
      */
@@ -163,8 +165,8 @@ class SchemaParser implements Arrayable
     /**
      * Create field.
      *
-     * @param  string $column
-     * @param  array  $attributes
+     * @param string $column
+     * @param array $attributes
      *
      * @return string
      */
@@ -196,9 +198,9 @@ class SchemaParser implements Arrayable
     /**
      * Format field to script.
      *
-     * @param  int    $key
-     * @param  string $field
-     * @param  string $column
+     * @param int $key
+     * @param string $field
+     * @param string $column
      *
      * @return string
      */
@@ -220,9 +222,9 @@ class SchemaParser implements Arrayable
     /**
      * Format field to script.
      *
-     * @param  int    $key
-     * @param  string $field
-     * @param  string $column
+     * @param int $key
+     * @param string $field
+     * @param string $column
      *
      * @return string
      */

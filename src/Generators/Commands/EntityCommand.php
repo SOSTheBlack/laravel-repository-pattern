@@ -1,4 +1,5 @@
 <?php
+
 namespace SOSTheBlack\Repository\Generators\Commands;
 
 use Illuminate\Console\Command;
@@ -8,8 +9,9 @@ use Symfony\Component\Console\Input\InputOption;
 
 /**
  * Class EntityCommand
+
  * @package SOSTheBlack\Repository\Generators\Commands
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class EntityCommand extends Command
 {
@@ -36,10 +38,11 @@ class EntityCommand extends Command
     /**
      * Execute the command.
      *
-     * @see fire()
      * @return void
+     * @see fire()
      */
-    public function handle(){
+    public function handle()
+    {
         $this->laravel->call([$this, 'fire'], func_get_args());
     }
 
@@ -53,7 +56,7 @@ class EntityCommand extends Command
 
         if ($this->confirm('Would you like to create a Presenter? [y|N]')) {
             $this->call('make:presenter', [
-                'name'    => $this->argument('name'),
+                'name' => $this->argument('name'),
                 '--force' => $this->option('force'),
             ]);
         }
@@ -65,7 +68,7 @@ class EntityCommand extends Command
 
         if ($validator == 'yes') {
             $this->call('make:validator', [
-                'name'    => $this->argument('name'),
+                'name' => $this->argument('name'),
                 '--rules' => $this->option('rules'),
                 '--force' => $this->option('force'),
             ]);
@@ -74,24 +77,24 @@ class EntityCommand extends Command
         if ($this->confirm('Would you like to create a Controller? [y|N]')) {
 
             $resource_args = [
-                'name'    => $this->argument('name')
+                'name' => $this->argument('name')
             ];
 
             // Generate a controller resource
-            $controller_command = ((float) app()->version() >= 5.5  ? 'make:rest-controller' : 'make:resource');
+            $controller_command = ((float)app()->version() >= 5.5 ? 'make:rest-controller' : 'make:resource');
             $this->call($controller_command, $resource_args);
         }
 
         $this->call('make:repository', [
-            'name'        => $this->argument('name'),
-            '--fillable'  => $this->option('fillable'),
-            '--rules'     => $this->option('rules'),
+            'name' => $this->argument('name'),
+            '--fillable' => $this->option('fillable'),
+            '--rules' => $this->option('rules'),
             '--validator' => $validator,
-            '--force'     => $this->option('force')
+            '--force' => $this->option('force')
         ]);
 
         $this->call('make:bindings', [
-            'name'    => $this->argument('name'),
+            'name' => $this->argument('name'),
             '--force' => $this->option('force')
         ]);
     }

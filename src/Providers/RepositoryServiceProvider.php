@@ -1,12 +1,14 @@
 <?php
+
 namespace SOSTheBlack\Repository\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
 /**
  * Class RepositoryServiceProvider
+
  * @package SOSTheBlack\Repository\Providers
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class RepositoryServiceProvider extends ServiceProvider
 {

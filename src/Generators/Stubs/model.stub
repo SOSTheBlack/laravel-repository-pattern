@@ -9,6 +9,7 @@ use SOSTheBlack\Repository\Traits\TransformableTrait;
 /**
  * Class $CLASS$.
  *
+
  * @package $NAMESPACE$
  */
 class $CLASS$ extends Model implements Transformable

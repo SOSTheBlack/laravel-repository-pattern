@@ -8,6 +8,7 @@ use SOSTheBlack\Repository\Presenter\FractalPresenter;
 /**
  * Class $CLASS$Presenter.
  *
+
  * @package $NAMESPACE$
  */
 class $CLASS$Presenter extends FractalPresenter

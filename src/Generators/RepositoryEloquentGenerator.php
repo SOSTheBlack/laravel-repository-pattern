@@ -1,12 +1,14 @@
 <?php
+
 namespace SOSTheBlack\Repository\Generators;
 
 use SOSTheBlack\Repository\Generators\Migrations\SchemaParser;
 
 /**
  * Class RepositoryEloquentGenerator
+
  * @package SOSTheBlack\Repository\Generators
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class RepositoryEloquentGenerator extends Generator
 {
@@ -17,26 +19,6 @@ class RepositoryEloquentGenerator extends Generator
      * @var string
      */
     protected $stub = 'repository/eloquent';
-
-    /**
-     * Get root namespace.
-     *
-     * @return string
-     */
-    public function getRootNamespace()
-    {
-        return parent::getRootNamespace() . parent::getConfigGeneratorClassPath($this->getPathConfigNode());
-    }
-
-    /**
-     * Get generator path config node.
-     *
-     * @return string
-     */
-    public function getPathConfigNode()
-    {
-        return 'repositories';
-    }
 
     /**
      * Get destination path for generated file.
@@ -59,6 +41,16 @@ class RepositoryEloquentGenerator extends Generator
     }
 
     /**
+     * Get generator path config node.
+     *
+     * @return string
+     */
+    public function getPathConfigNode()
+    {
+        return 'repositories';
+    }
+
+    /**
      * Get array replacements.
      *
      * @return array
@@ -72,12 +64,22 @@ class RepositoryEloquentGenerator extends Generator
         ], '\\', $repository);
 
         return array_merge(parent::getReplacements(), [
-            'fillable'      => $this->getFillable(),
+            'fillable' => $this->getFillable(),
             'use_validator' => $this->getValidatorUse(),
-            'validator'     => $this->getValidatorMethod(),
-            'repository'    => $repository,
-            'model'         => isset($this->options['model']) ? $this->options['model'] : ''
+            'validator' => $this->getValidatorMethod(),
+            'repository' => $repository,
+            'model' => isset($this->options['model']) ? $this->options['model'] : ''
         ]);
+    }
+
+    /**
+     * Get root namespace.
+     *
+     * @return string
+     */
+    public function getRootNamespace()
+    {
+        return parent::getRootNamespace() . parent::getConfigGeneratorClassPath($this->getPathConfigNode());
     }
 
     /**
@@ -120,7 +122,7 @@ class RepositoryEloquentGenerator extends Generator
     public function getValidator()
     {
         $validatorGenerator = new ValidatorGenerator([
-            'name'  => $this->name,
+            'name' => $this->name,
             'rules' => $this->rules,
             'force' => $this->force,
         ]);
@@ -128,9 +130,9 @@ class RepositoryEloquentGenerator extends Generator
         $validator = $validatorGenerator->getRootNamespace() . '\\' . $validatorGenerator->getName();
 
         return str_replace([
-            "\\",
-            '/'
-        ], '\\', $validator) . 'Validator';
+                "\\",
+                '/'
+            ], '\\', $validator) . 'Validator';
 
     }
 

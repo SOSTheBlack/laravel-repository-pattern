@@ -1,4 +1,5 @@
 <?php
+
 namespace SOSTheBlack\Repository\Generators\Commands;
 
 use Illuminate\Console\Command;
@@ -10,8 +11,9 @@ use Symfony\Component\Console\Input\InputOption;
 
 /**
  * Class PresenterCommand
+
  * @package SOSTheBlack\Repository\Generators\Commands
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class PresenterCommand extends Command
 {
@@ -40,10 +42,11 @@ class PresenterCommand extends Command
     /**
      * Execute the command.
      *
-     * @see fire()
      * @return void
+     * @see fire()
      */
-    public function handle(){
+    public function handle()
+    {
         $this->laravel->call([$this, 'fire'], func_get_args());
     }
 
@@ -57,7 +60,7 @@ class PresenterCommand extends Command
 
         try {
             (new PresenterGenerator([
-                'name'  => $this->argument('name'),
+                'name' => $this->argument('name'),
                 'force' => $this->option('force'),
             ]))->run();
             $this->info("Presenter created successfully.");
@@ -65,7 +68,7 @@ class PresenterCommand extends Command
             if (!\File::exists(app()->path() . '/Transformers/' . $this->argument('name') . 'Transformer.php')) {
                 if ($this->confirm('Would you like to create a Transformer? [y|N]')) {
                     (new TransformerGenerator([
-                        'name'  => $this->argument('name'),
+                        'name' => $this->argument('name'),
                         'force' => $this->option('force'),
                     ]))->run();
                     $this->info("Transformer created successfully.");

@@ -8,6 +8,7 @@ use SOSTheBlack\Repository\Contracts\RepositoryInterface;
 /**
  * Class $CLASS$Criteria.
  *
+
  * @package $NAMESPACE$
  */
 class $CLASS$Criteria implements CriteriaInterface

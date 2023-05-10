@@ -1,4 +1,5 @@
 <?php
+
 namespace SOSTheBlack\Repository\Presenter;
 
 use Exception;
@@ -15,8 +16,9 @@ use SOSTheBlack\Repository\Contracts\PresenterInterface;
 
 /**
  * Class FractalPresenter
+
  * @package SOSTheBlack\Repository\Presenter
- * @author Anderson Andrade <contato@andersonandra.de>
+ * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 abstract class FractalPresenter implements PresenterInterface
 {
@@ -57,20 +59,6 @@ abstract class FractalPresenter implements PresenterInterface
     /**
      * @return $this
      */
-    protected function setupSerializer()
-    {
-        $serializer = $this->serializer();
-
-        if ($serializer instanceof SerializerAbstract) {
-            $this->fractal->setSerializer(new $serializer());
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return $this
-     */
     protected function parseIncludes()
     {
 
@@ -79,6 +67,20 @@ abstract class FractalPresenter implements PresenterInterface
 
         if ($request->has($paramIncludes)) {
             $this->fractal->parseIncludes($request->get($paramIncludes));
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    protected function setupSerializer()
+    {
+        $serializer = $this->serializer();
+
+        if ($serializer instanceof SerializerAbstract) {
+            $this->fractal->setSerializer(new $serializer());
         }
 
         return $this;
@@ -95,13 +97,6 @@ abstract class FractalPresenter implements PresenterInterface
 
         return new $serializer();
     }
-
-    /**
-     * Transformer
-     *
-     * @return \League\Fractal\TransformerAbstract
-     */
-    abstract public function getTransformer();
 
     /**
      * Prepare data to present
@@ -131,22 +126,19 @@ abstract class FractalPresenter implements PresenterInterface
     /**
      * @param $data
      *
-     * @return Item
-     */
-    protected function transformItem($data)
-    {
-        return new Item($data, $this->getTransformer(), $this->resourceKeyItem);
-    }
-
-    /**
-     * @param $data
-     *
      * @return \League\Fractal\Resource\Collection
      */
     protected function transformCollection($data)
     {
         return new Collection($data, $this->getTransformer(), $this->resourceKeyCollection);
     }
+
+    /**
+     * Transformer
+     *
+     * @return \League\Fractal\TransformerAbstract
+     */
+    abstract public function getTransformer();
 
     /**
      * @param AbstractPaginator|LengthAwarePaginator|Paginator $paginator
@@ -160,5 +152,15 @@ abstract class FractalPresenter implements PresenterInterface
         $resource->setPaginator(new IlluminatePaginatorAdapter($paginator));
 
         return $resource;
+    }
+
+    /**
+     * @param $data
+     *
+     * @return Item
+     */
+    protected function transformItem($data)
+    {
+        return new Item($data, $this->getTransformer(), $this->resourceKeyItem);
     }
 }
