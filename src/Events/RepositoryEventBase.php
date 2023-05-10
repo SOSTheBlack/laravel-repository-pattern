@@ -3,6 +3,7 @@
 namespace SOSTheBlack\Repository\Events;
 
 use Illuminate\Database\Eloquent\Model;
+use SOSTheBlack\Repository\Contracts\RepositoryEventBaseInterface;
 use SOSTheBlack\Repository\Contracts\RepositoryInterface;
 
 /**
@@ -11,26 +12,26 @@ use SOSTheBlack\Repository\Contracts\RepositoryInterface;
  * @package SOSTheBlack\Repository\Events
  * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
-abstract class RepositoryEventBase
+abstract class RepositoryEventBase implements RepositoryEventBaseInterface
 {
     /**
-     * @var Model
+     * @var array|Model
      */
-    protected $model;
+    protected Model|array $model;
 
     /**
      * @var RepositoryInterface
      */
-    protected $repository;
+    protected RepositoryInterface $repository;
 
     /**
      * @var string
      */
-    protected $action;
+    protected string $action;
 
     /**
      * @param RepositoryInterface $repository
-     * @param Model $model
+     * @param Model|null $model
      */
     public function __construct(RepositoryInterface $repository, Model $model = null)
     {
@@ -39,9 +40,9 @@ abstract class RepositoryEventBase
     }
 
     /**
-     * @return Model|array
+     * @return Model|array|null
      */
-    public function getModel()
+    public function getModel(): Model|array|null
     {
         return $this->model;
     }
@@ -49,7 +50,7 @@ abstract class RepositoryEventBase
     /**
      * @return RepositoryInterface
      */
-    public function getRepository()
+    public function getRepository(): RepositoryInterface
     {
         return $this->repository;
     }
@@ -57,7 +58,7 @@ abstract class RepositoryEventBase
     /**
      * @return string
      */
-    public function getAction()
+    public function getAction(): string
     {
         return $this->action;
     }

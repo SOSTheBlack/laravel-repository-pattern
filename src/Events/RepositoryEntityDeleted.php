@@ -13,5 +13,5 @@ class RepositoryEntityDeleted extends RepositoryEventBase
     /**
      * @var string
      */
-    protected $action = "deleted";
+    protected string $action = self::ACTION_DELETE;
 }
