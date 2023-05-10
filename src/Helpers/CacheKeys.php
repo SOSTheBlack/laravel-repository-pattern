@@ -4,7 +4,6 @@ namespace SOSTheBlack\Repository\Helpers;
 
 /**
  * Class CacheKeys
-
  * @package SOSTheBlack\Repository\Helpers
  * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */

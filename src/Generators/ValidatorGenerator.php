@@ -7,7 +7,6 @@ use SOSTheBlack\Repository\Generators\Migrations\SchemaParser;
 
 /**
  * Class ValidatorGenerator
-
  * @package SOSTheBlack\Repository\Generators
  * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */

@@ -10,7 +10,6 @@ use SOSTheBlack\Repository\Exceptions\RepositoryException;
 
 /**
  * Interface RepositoryInterface
-
  * @package SOSTheBlack\Repository\Contracts
  * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */

@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\File\Exception\FileNotFoundException;
 
 /**
  * Class MigrationGenerator
-
  * @package SOSTheBlack\Repository\Generators
  * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */

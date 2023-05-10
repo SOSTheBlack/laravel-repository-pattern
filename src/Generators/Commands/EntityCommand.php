@@ -9,7 +9,6 @@ use Symfony\Component\Console\Input\InputOption;
 
 /**
  * Class EntityCommand
-
  * @package SOSTheBlack\Repository\Generators\Commands
  * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */

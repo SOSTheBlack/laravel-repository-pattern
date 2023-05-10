@@ -1,9 +1,8 @@
-# Laravel 5 Repositories
+# Laravel 10+ Repositories
 
 Laravel Repositories is used to abstract the data layer, making our application more flexible to maintain.
 
 [![Latest Stable Version](https://poser.pugx.org/SOSTheBlack/laravel-repository-pattern/v/stable)](https://packagist.org/packages/SOSTheBlack/laravel-repository-pattern) [![Total Downloads](https://poser.pugx.org/SOSTheBlack/laravel-repository-pattern/downloads)](https://packagist.org/packages/SOSTheBlack/laravel-repository-pattern) [![Latest Unstable Version](https://poser.pugx.org/SOSTheBlack/laravel-repository-pattern/v/unstable)](https://packagist.org/packages/SOSTheBlack/laravel-repository-pattern) [![License](https://poser.pugx.org/SOSTheBlack/laravel-repository-pattern/license)](https://packagist.org/packages/SOSTheBlack/laravel-repository-pattern)
-[![Analytics](https://ga-beacon.appspot.com/UA-61050740-1/l5-repository/readme)](https://packagist.org/packages/SOSTheBlack/laravel-repository-pattern)
 [![Code Climate](https://codeclimate.com/github/SOSTheBlack/laravel-repository-pattern/badges/gpa.svg)](https://codeclimate.com/github/SOSTheBlack/laravel-repository-pattern)
 
 You want to know a little more about the Repository pattern? [Read this great article](http://bit.ly/1IdmRNS).
@@ -20,13 +19,13 @@ You want to know a little more about the Repository pattern? [Read this great ar
     - <a href="#sostheblackrepositorycontractspresenterinterface">PresenterInterface</a>
     - <a href="#sostheblackrepositorycontractscriteriainterface">CriteriaInterface</a>
 - <a href="#usage">Usage</a>
-	- <a href="#create-a-model">Create a Model</a>
-	- <a href="#create-a-repository">Create a Repository</a>
-	- <a href="#generators">Generators</a>
-	- <a href="#use-methods">Use methods</a>
-	- <a href="#create-a-criteria">Create a Criteria</a>
-	- <a href="#using-the-criteria-in-a-controller">Using the Criteria in a Controller</a>
-	- <a href="#using-the-requestcriteria">Using the RequestCriteria</a>
+    - <a href="#create-a-model">Create a Model</a>
+    - <a href="#create-a-repository">Create a Repository</a>
+    - <a href="#generators">Generators</a>
+    - <a href="#use-methods">Use methods</a>
+    - <a href="#create-a-criteria">Create a Criteria</a>
+    - <a href="#using-the-criteria-in-a-controller">Using the Criteria in a Controller</a>
+    - <a href="#using-the-requestcriteria">Using the RequestCriteria</a>
 - <a href="#cache">Cache</a>
     - <a href="#cache-usage">Usage</a>
     - <a href="#cache-config">Config</a>
@@ -53,13 +52,14 @@ composer require SOSTheBlack/laravel-repository-pattern
 
 ### Laravel
 
-#### >= laravel5.5
+#### > = laravel5.5
 
 ServiceProvider will be attached automatically
 
 #### Other
 
-In your `config/app.php` add `SOSTheBlack\Repository\Providers\RepositoryServiceProvider::class` to the end of the `providers` array:
+In your `config/app.php` add `SOSTheBlack\Repository\Providers\RepositoryServiceProvider::class` to the end of
+the `providers` array:
 
 ```php
 'providers' => [
@@ -109,7 +109,6 @@ php artisan vendor:publish --provider "SOSTheBlack\Repository\Providers\Reposito
 - setPresenter($presenter);
 - skipPresenter($status = true);
 
-
 ### SOSTheBlack\Repository\Contracts\RepositoryCriteriaInterface
 
 - pushCriteria($criteria)
@@ -143,7 +142,6 @@ php artisan vendor:publish --provider "SOSTheBlack\Repository\Providers\Reposito
 ### SOSTheBlack\Repository\Contracts\Transformable
 
 - transform();
-
 
 ## Usage
 
@@ -193,7 +191,9 @@ Create your repositories easily through the generator.
 
 #### Config
 
-You must first configure the storage location of the repository files. By default is the "app" folder and the namespace "App". Please note that, values in the `paths` array are acutally used as both *namespace* and file paths. Relax though, both foreward and backward slashes are taken care of during generation.
+You must first configure the storage location of the repository files. By default is the "app" folder and the
+namespace "App". Please note that, values in the `paths` array are acutally used as both *namespace* and file paths.
+Relax though, both foreward and backward slashes are taken care of during generation.
 
 ```php
     ...
@@ -224,7 +224,8 @@ You may want to save the root of your project folder out of the app and add anot
     ]
 ```
 
-Additionally, you may wish to customize where your generated classes end up being saved.  That can be accomplished by editing the `paths` node to your liking.  For example:
+Additionally, you may wish to customize where your generated classes end up being saved. That can be accomplished by
+editing the `paths` node to your liking. For example:
 
 ```php
     'generator'=>[
@@ -253,7 +254,8 @@ php artisan make:entity Post
 ```
 
 This will create the Controller, the Validator, the Model, the Repository, the Presenter and the Transformer classes.
-It will also create a new service provider that will be used to bind the Eloquent Repository with its corresponding Repository Interface.
+It will also create a new service provider that will be used to bind the Eloquent Repository with its corresponding
+Repository Interface.
 To load it, just add this to your AppServiceProvider@register method:
 
 ```php
@@ -286,15 +288,18 @@ To add validations rules directly with your command you need to pass the `--rule
 php artisan make:entity Cat --fillable="title:string,content:text" --rules="title=>required|min:2, content=>sometimes|min:10"
 ```
 
-The command will also create your basic RESTfull controller so just add this line into your `routes.php` file and you will have a basic CRUD:
+The command will also create your basic RESTfull controller so just add this line into your `routes.php` file and you
+will have a basic CRUD:
 
  ```php
  Route::resource('cats', CatsController::class);
  ```
 
-When running the command, you will be creating the "Entities" folder and "Repositories" inside the folder that you set as the default.
+When running the command, you will be creating the "Entities" folder and "Repositories" inside the folder that you set
+as the default.
 
-Now that is done, you still need to bind its interface for your real repository, for example in your own Repositories Service Provider.
+Now that is done, you still need to bind its interface for your real repository, for example in your own Repositories
+Service Provider.
 
 ```php
 App::bind('{YOUR_NAMESPACE}Repositories\PostRepository', '{YOUR_NAMESPACE}Repositories\PostRepositoryEloquent');
@@ -461,7 +466,8 @@ $this->repository->deleteWhere([
 php artisan make:criteria MyCriteria
 ```
 
-Criteria are a way to change the repository of the query by applying specific conditions according to your needs. You can add multiple Criteria in your repository.
+Criteria are a way to change the repository of the query by applying specific conditions according to your needs. You
+can add multiple Criteria in your repository.
 
 ```php
 
@@ -552,14 +558,15 @@ $this->repository->popCriteria(new Criteria1());
 $this->repository->popCriteria(Criteria1::class);
 ```
 
-
 ### Using the RequestCriteria
 
-RequestCriteria is a standard Criteria implementation. It enables filters to perform in the repository from parameters sent in the request.
+RequestCriteria is a standard Criteria implementation. It enables filters to perform in the repository from parameters
+sent in the request.
 
 You can perform a dynamic search, filter the data and customize the queries.
 
-To use the Criteria in your repository, you can add a new criteria in the boot method of your repository, or directly use in your controller, in order to filter out only a few requests.
+To use the Criteria in your repository, you can add a new criteria in the boot method of your repository, or directly
+use in your controller, in order to filter out only a few requests.
 
 #### Enabling in your Repository
 
@@ -609,7 +616,6 @@ protected $fieldSearchable = [
 	'your_field'=>'condition'
 ];
 ```
-
 
 #### Enabling in your Controller
 
@@ -694,6 +700,7 @@ By default RequestCriteria makes its queries using the **OR** comparison operato
 `http://sostheblack.local/users?search=age:17;email:john@gmail.com`
 
 The above example will execute the following query:
+
 ``` sql
 SELECT * FROM users WHERE age = 17 OR email = 'john@gmail.com';
 ```
@@ -701,10 +708,6 @@ SELECT * FROM users WHERE age = 17 OR email = 'john@gmail.com';
 In order for it to query using the **AND**, pass the *searchJoin* parameter as shown below:
 
 `http://sostheblack.local/users?search=age:17;email:john@gmail.com&searchJoin=and`
-
-
-
-
 
 Filtering fields
 
@@ -812,7 +815,6 @@ Result will have something like this
    ]
 ```
 
-
 Sorting multiple columns difference sortedBy
 
 `http://sostheblack.local/users?orderBy=name;created_at&sortedBy=desc;asc`
@@ -908,7 +910,8 @@ class PostRepository extends BaseRepository implements CacheableInterface {
 }
 ```
 
-Done , done that your repository will be cached , and the repository cache is cleared whenever an item is created, modified or deleted.
+Done , done that your repository will be cached , and the repository cache is cleared whenever an item is created,
+modified or deleted.
 
 #### Cache Config
 
@@ -1059,7 +1062,8 @@ class PostRepository extends BaseRepository {
 
 #### Defining rules in the repository
 
-Alternatively, instead of using a class to define its validation rules, you can set your rules directly into the rules repository property, it will have the same effect as a Validation class.
+Alternatively, instead of using a class to define its validation rules, you can set your rules directly into the rules
+repository property, it will have the same effect as a Validation class.
 
 ```php
 use Prettus\Validator\Contracts\ValidatorInterface;use SOSTheBlack\Repository\Eloquent\BaseRepository;
@@ -1093,7 +1097,8 @@ class PostRepository extends BaseRepository {
 }
 ```
 
-Validation is now ready. In case of a failure an exception will be given of the type: *Prettus\Validator\Exceptions\ValidatorException*
+Validation is now ready. In case of a failure an exception will be given of the type:
+*Prettus\Validator\Exceptions\ValidatorException*
 
 ### Presenters
 
@@ -1103,9 +1108,11 @@ Presenters function as a wrapper and renderer for objects.
 
 Requires [Fractal](http://fractal.thephpleague.com/). `composer require league/fractal`
 
-There are two ways to implement the Presenter, the first is creating a TransformerAbstract and set it using your Presenter class as described in the Create a Transformer Class.
+There are two ways to implement the Presenter, the first is creating a TransformerAbstract and set it using your
+Presenter class as described in the Create a Transformer Class.
 
-The second way is to make your model implement the Transformable interface, and use the default Presenter ModelFractarPresenter, this will have the same effect.
+The second way is to make your model implement the Transformable interface, and use the default Presenter
+ModelFractarPresenter, this will have the same effect.
 
 ##### Transformer Class
 
@@ -1142,6 +1149,7 @@ php artisan make:presenter Post
 ```
 
 The command will prompt you for creating a Transformer too if you haven't already.
+
 ###### Create a Presenter
 
 ```php
@@ -1185,10 +1193,12 @@ $this->repository->setPresenter("App\\Presenter\\PostPresenter");
 
 ###### Using the presenter after from the Model
 
-If you recorded a presenter and sometime used the `skipPresenter()` method or simply you do not want your result is not changed automatically by the presenter.
+If you recorded a presenter and sometime used the `skipPresenter()` method or simply you do not want your result is not
+changed automatically by the presenter.
 You can implement Presentable interface on your model so you will be able to present your model at any time. See below:
 
-In your model, implement the interface `SOSTheBlack\Repository\Contracts\Presentable` and `SOSTheBlack\Repository\Traits\PresentableTrait`
+In your model, implement the interface `SOSTheBlack\Repository\Contracts\Presentable`
+and `SOSTheBlack\Repository\Traits\PresentableTrait`
 
 ```php
 namespace App;
@@ -1230,7 +1240,8 @@ print_r( $post->presenter() ); //It produces an output as array
 
 ```
 
-You can skip the presenter at every visit and use it on demand directly into the model, for it set the `$skipPresenter` attribute to true in your repository:
+You can skip the presenter at every visit and use it on demand directly into the model, for it set the `$skipPresenter`
+attribute to true in your repository:
 
 ```php
 use SOSTheBlack\Repository\Eloquent\BaseRepository;

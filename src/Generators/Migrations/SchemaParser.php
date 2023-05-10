@@ -8,7 +8,6 @@ use Illuminate\Support\Str;
 
 /**
  * Class SchemaParser
-
  * @package SOSTheBlack\Repository\Generators\Migrations
  * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */

@@ -6,7 +6,6 @@ use SOSTheBlack\Repository\Generators\Migrations\SchemaParser;
 
 /**
  * Class ModelGenerator
-
  * @package SOSTheBlack\Repository\Generators
  * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */

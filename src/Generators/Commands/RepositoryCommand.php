@@ -15,7 +15,6 @@ use Symfony\Component\Console\Input\InputOption;
 
 /**
  * Class RepositoryCommand
-
  * @package SOSTheBlack\Repository\Generators\Commands
  * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */

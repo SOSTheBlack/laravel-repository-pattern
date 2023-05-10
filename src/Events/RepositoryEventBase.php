@@ -8,7 +8,6 @@ use SOSTheBlack\Repository\Contracts\RepositoryInterface;
 
 /**
  * Class RepositoryEventBase
-
  * @package SOSTheBlack\Repository\Events
  * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */

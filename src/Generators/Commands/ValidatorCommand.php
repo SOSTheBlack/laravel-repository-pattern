@@ -10,7 +10,6 @@ use Symfony\Component\Console\Input\InputOption;
 
 /**
  * Class ValidatorCommand
-
  * @package SOSTheBlack\Repository\Generators\Commands
  */
 class ValidatorCommand extends Command

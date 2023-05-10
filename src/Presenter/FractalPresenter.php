@@ -17,7 +17,6 @@ use SOSTheBlack\Repository\Contracts\PresenterInterface;
 
 /**
  * Class FractalPresenter
-
  * @package SOSTheBlack\Repository\Presenter
  * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */

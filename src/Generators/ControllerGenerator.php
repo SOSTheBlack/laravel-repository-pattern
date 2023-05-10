@@ -6,7 +6,6 @@ use Illuminate\Support\Str;
 
 /**
  * Class ControllerGenerator
-
  * @package SOSTheBlack\Repository\Generators
  * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
@@ -38,6 +37,16 @@ class ControllerGenerator extends Generator
     public function getBasePath()
     {
         return config('repository.generator.basePath', app()->path());
+    }
+
+    /**
+     * Get generator path config node.
+     *
+     * @return string
+     */
+    public function getPathConfigNode()
+    {
+        return 'controllers';
     }
 
     /**
@@ -117,16 +126,6 @@ class ControllerGenerator extends Generator
     public function getRootNamespace()
     {
         return str_replace('/', '\\', parent::getRootNamespace() . parent::getConfigGeneratorClassPath($this->getPathConfigNode()));
-    }
-
-    /**
-     * Get generator path config node.
-     *
-     * @return string
-     */
-    public function getPathConfigNode()
-    {
-        return 'controllers';
     }
 
     /**

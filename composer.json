@@ -26,9 +26,9 @@
   "homepage": "https://github.com/SOSTheBlack/laravel-repository-pattern",
   "support": {
     "email": "contato@andersonandra.de",
-    "issues":"https://github.com/SOSTheBlack/laravel-repository-pattern/issues",
-    "wiki":"https://github.com/SOSTheBlack/laravel-repository-pattern",
-    "source":"https://github.com/SOSTheBlack/laravel-repository-pattern",
+    "issues": "https://github.com/SOSTheBlack/laravel-repository-pattern/issues",
+    "wiki": "https://github.com/SOSTheBlack/laravel-repository-pattern",
+    "source": "https://github.com/SOSTheBlack/laravel-repository-pattern",
     "docs": "http://andersao.github.io/l5-repository"
   },
   "require": {

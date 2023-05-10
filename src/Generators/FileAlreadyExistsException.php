@@ -6,7 +6,6 @@ use Exception;
 
 /**
  * Class FileAlreadyExistsException
-
  * @package SOSTheBlack\Repository\Generators
  * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */

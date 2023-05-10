@@ -29,7 +29,6 @@ use SOSTheBlack\Repository\Traits\ComparesVersionsTrait;
 /**
  * Class BaseRepository
  *
-
  * @package SOSTheBlack\Repository\Eloquent
  * @author  Anderson Andrade <contato@andersonandra.de>
  */

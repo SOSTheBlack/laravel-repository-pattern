@@ -7,7 +7,6 @@ use Illuminate\Support\Collection;
 
 /**
  * Interface RepositoryCriteriaInterface
-
  * @package SOSTheBlack\Repository\Contracts
  * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */

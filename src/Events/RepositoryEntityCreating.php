@@ -7,7 +7,6 @@ use SOSTheBlack\Repository\Contracts\RepositoryInterface;
 /**
  * Class RepositoryEntityCreated
  *
-
  * @package SOSTheBlack\Repository\Events
  * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */

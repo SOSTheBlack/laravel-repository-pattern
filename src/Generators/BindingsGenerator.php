@@ -4,7 +4,6 @@ namespace SOSTheBlack\Repository\Generators;
 
 /**
  * Class BindingsGenerator
-
  * @package SOSTheBlack\Repository\Generators
  * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
