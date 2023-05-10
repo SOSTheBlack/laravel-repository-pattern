@@ -7,8 +7,6 @@ use SOSTheBlack\Repository\Contracts\PresenterInterface;
 
 /**
  * Class PresentableTrait
-
-
  * @package SOSTheBlack\Repository\Traits
  * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
@@ -16,16 +14,16 @@ trait PresentableTrait
 {
 
     /**
-     * @var PresenterInterface
+     * @var PresenterInterface|null
      */
-    protected $presenter = null;
+    protected ?PresenterInterface $presenter = null;
 
     /**
-     * @param \SOSTheBlack\Repository\Contracts\PresenterInterface $presenter
+     * @param PresenterInterface $presenter
      *
      * @return $this
      */
-    public function setPresenter(PresenterInterface $presenter)
+    public function setPresenter(PresenterInterface $presenter): static
     {
         $this->presenter = $presenter;
 
@@ -38,7 +36,7 @@ trait PresentableTrait
      *
      * @return mixed|null
      */
-    public function present($key, $default = null)
+    public function present($key, $default = null): mixed
     {
         if ($this->hasPresenter()) {
             $data = $this->presenter()['data'];
@@ -52,15 +50,15 @@ trait PresentableTrait
     /**
      * @return bool
      */
-    protected function hasPresenter()
+    protected function hasPresenter(): bool
     {
         return isset($this->presenter) && $this->presenter instanceof PresenterInterface;
     }
 
     /**
-     * @return $this|mixed
+     * @return null|static
      */
-    public function presenter()
+    public function presenter(): null|static
     {
         if ($this->hasPresenter()) {
             return $this->presenter->present($this);
