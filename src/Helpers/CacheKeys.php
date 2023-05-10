@@ -14,12 +14,12 @@ class CacheKeys
     /**
      * @var string
      */
-    protected static $storeFile = "repository-cache-keys.json";
+    protected static string $storeFile = "repository-cache-keys.json";
 
     /**
-     * @var array
+     * @var array|null
      */
-    protected static $keys = null;
+    protected static ?array $keys = null;
 
     /**
      * @param $group
@@ -27,7 +27,7 @@ class CacheKeys
      *
      * @return void
      */
-    public static function putKey($group, $key)
+    public static function putKey($group, $key): void
     {
         self::loadKeys();
 
@@ -41,9 +41,9 @@ class CacheKeys
     }
 
     /**
-     * @return array|mixed
+     * @return mixed
      */
-    public static function loadKeys()
+    public static function loadKeys(): mixed
     {
         if (!is_null(self::$keys) && is_array(self::$keys)) {
             return self::$keys;
@@ -64,17 +64,15 @@ class CacheKeys
     /**
      * @return string
      */
-    public static function getFileKeys()
+    public static function getFileKeys(): string
     {
-        $file = storage_path("framework/cache/" . self::$storeFile);
-
-        return $file;
+        return storage_path("framework/cache/" . self::$storeFile);
     }
 
     /**
      * @return int
      */
-    public static function storeKeys()
+    public static function storeKeys(): int
     {
         $file = self::getFileKeys();
         self::$keys = is_null(self::$keys) ? [] : self::$keys;
@@ -86,9 +84,9 @@ class CacheKeys
     /**
      * @param $group
      *
-     * @return array|mixed
+     * @return mixed
      */
-    public static function getKeys($group)
+    public static function getKeys($group): mixed
     {
         self::loadKeys();
         self::$keys[$group] = isset(self::$keys[$group]) ? self::$keys[$group] : [];
@@ -102,7 +100,7 @@ class CacheKeys
      *
      * @return mixed
      */
-    public static function __callStatic($method, $parameters)
+    public static function __callStatic($method, $parameters): mixed
     {
         $instance = new static;
 
@@ -118,7 +116,7 @@ class CacheKeys
      *
      * @return mixed
      */
-    public function __call($method, $parameters)
+    public function __call($method, $parameters): mixed
     {
         $instance = new static;
 
