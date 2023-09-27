@@ -34,7 +34,7 @@ class CriteriaCommand extends Command
      *
      * @var string
      */
-    protected $type = 'Criteria';
+    protected string $type = 'Criteria';
 
     /**
      * Execute the command.
@@ -42,7 +42,7 @@ class CriteriaCommand extends Command
      * @return void
      * @see fire()
      */
-    public function handle()
+    public function handle(): void
     {
         $this->laravel->call([$this, 'fire'], func_get_args());
     }
@@ -72,7 +72,7 @@ class CriteriaCommand extends Command
      *
      * @return array
      */
-    public function getArguments()
+    public function getArguments(): array
     {
         return [
             [
@@ -89,7 +89,7 @@ class CriteriaCommand extends Command
      *
      * @return array
      */
-    public function getOptions()
+    public function getOptions(): array
     {
         return [
             [

@@ -30,9 +30,9 @@ class EntityCommand extends Command
     protected $description = 'Create a new entity.';
 
     /**
-     * @var Collection
+     * @var ?Collection
      */
-    protected $generators = null;
+    protected ?Collection $generators = null;
 
     /**
      * Execute the command.
@@ -40,7 +40,7 @@ class EntityCommand extends Command
      * @return void
      * @see fire()
      */
-    public function handle()
+    public function handle(): void
     {
         $this->laravel->call([$this, 'fire'], func_get_args());
     }
@@ -50,7 +50,7 @@ class EntityCommand extends Command
      *
      * @return void
      */
-    public function fire()
+    public function fire(): void
     {
 
         if ($this->confirm('Would you like to create a Presenter? [y|N]')) {
@@ -104,7 +104,7 @@ class EntityCommand extends Command
      *
      * @return array
      */
-    public function getArguments()
+    public function getArguments(): array
     {
         return [
             [
@@ -122,7 +122,7 @@ class EntityCommand extends Command
      *
      * @return array
      */
-    public function getOptions()
+    public function getOptions(): array
     {
         return [
             [

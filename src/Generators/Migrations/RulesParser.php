@@ -16,9 +16,9 @@ class RulesParser implements Arrayable
     /**
      * The set of rules.
      *
-     * @var string
+     * @var string|null
      */
-    protected $rules;
+    protected ?string $rules;
 
 
     /**
@@ -26,7 +26,7 @@ class RulesParser implements Arrayable
      *
      * @param string|null $rules
      */
-    public function __construct($rules = null)
+    public function __construct(?string $rules = null)
     {
         $this->rules = $rules;
     }
@@ -36,7 +36,7 @@ class RulesParser implements Arrayable
      *
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         return $this->parse($this->rules);
     }
@@ -48,7 +48,7 @@ class RulesParser implements Arrayable
      *
      * @return array
      */
-    public function parse($rules)
+    public function parse(string $rules): array
     {
         $this->rules = $rules;
         $parsed = [];
@@ -66,7 +66,7 @@ class RulesParser implements Arrayable
      *
      * @return array
      */
-    public function getRules()
+    public function getRules(): array
     {
         if (is_null($this->rules)) {
             return [];
@@ -82,7 +82,7 @@ class RulesParser implements Arrayable
      *
      * @return string
      */
-    public function getColumn($rules)
+    public function getColumn(string $rules): string
     {
         return Arr::first(explode('=>', $rules), function ($key, $value) {
             return $value;
@@ -98,7 +98,7 @@ class RulesParser implements Arrayable
      *
      * @return array
      */
-    public function getAttributes($column, $rules)
+    public function getAttributes(string $column, string $rules): array
     {
 
         return str_replace($column . '=>', '', $rules);

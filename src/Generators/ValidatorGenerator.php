@@ -18,7 +18,7 @@ class ValidatorGenerator extends Generator
      *
      * @var string
      */
-    protected $stub = 'validator/validator';
+    protected string $stub = 'validator/validator';
 
     /**
      * Get root namespace.

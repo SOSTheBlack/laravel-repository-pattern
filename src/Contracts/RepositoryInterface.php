@@ -5,7 +5,7 @@ namespace SOSTheBlack\Repository\Contracts;
 use Closure;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\Collection;
-use Prettus\Validator\Exceptions\ValidatorException;
+use SOSTheBlack\Repository\Exceptions\ValidatorException;
 use SOSTheBlack\Repository\Exceptions\RepositoryException;
 
 /**
@@ -24,7 +24,7 @@ interface RepositoryInterface
      *
      * @return mixed
      */
-    public static function __callStatic($method, $arguments);
+    public static function __callStatic($method, $arguments): mixed;
 
     /**
      * Retrieve data array for populate field select

@@ -14,7 +14,7 @@ class TransformerGenerator extends Generator
      *
      * @var string
      */
-    protected $stub = 'transformer/transformer';
+    protected string $stub = 'transformer/transformer';
 
     /**
      * Get destination path for generated file.

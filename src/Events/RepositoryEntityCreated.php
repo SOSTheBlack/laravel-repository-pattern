@@ -12,5 +12,5 @@ class RepositoryEntityCreated extends RepositoryEventBase
     /**
      * @var string
      */
-    protected string $action = SELF::ACTION_CREATED;
+    protected string $action = self::ACTION_CREATED;
 }

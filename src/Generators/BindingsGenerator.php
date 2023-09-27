@@ -15,18 +15,16 @@ class BindingsGenerator extends Generator
      *
      * @var string
      */
-    public $bindPlaceholder = '//:end-bindings:';
+    public string $bindPlaceholder = '//:end-bindings:';
     /**
      * Get stub name.
      *
      * @var string
      */
-    protected $stub = 'bindings/bindings';
+    protected string $stub = 'bindings/bindings';
 
-    public function run()
+    public function run(): mixed
     {
-
-
         // Add entity repository binding to the repository service provider
         $provider = \File::get($this->getPath());
         $repositoryInterface = '\\' . $this->getRepository() . "::class";

@@ -40,12 +40,12 @@ class RepositoryCommand extends Command
      *
      * @var string
      */
-    protected $type = 'Repository';
+    protected string $type = 'Repository';
 
     /**
-     * @var Collection
+     * @var ?Collection
      */
-    protected $generators = null;
+    protected ?Collection $generators = null;
 
 
     /**
@@ -54,7 +54,7 @@ class RepositoryCommand extends Command
      * @return void
      * @see fire()
      */
-    public function handle()
+    public function handle(): void
     {
         $this->laravel->call([$this, 'fire'], func_get_args());
     }
@@ -125,7 +125,7 @@ class RepositoryCommand extends Command
      *
      * @return array
      */
-    public function getArguments()
+    public function getArguments(): array
     {
         return [
             [
@@ -143,7 +143,7 @@ class RepositoryCommand extends Command
      *
      * @return array
      */
-    public function getOptions()
+    public function getOptions(): array
     {
         return [
             [

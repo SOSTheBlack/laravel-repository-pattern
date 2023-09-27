@@ -997,7 +997,7 @@ Easy validation with `sostheblack/laravel-validator`
 In the example below, we define some rules for both creation and edition
 
 ```php
-use \Prettus\Validator\LaravelValidator;
+use SOSTheBlack\Repository\Validators\LaravelValidator;
 
 class PostValidator extends LaravelValidator {
 
@@ -1013,8 +1013,8 @@ class PostValidator extends LaravelValidator {
 To define specific rules, proceed as shown below:
 
 ```php
-use \Prettus\Validator\Contracts\ValidatorInterface;
-use \Prettus\Validator\LaravelValidator;
+use SOSTheBlack\Repository\Contracts\ValidatorInterface;
+use SOSTheBlack\Repository\Validators\LaravelValidator;
 
 class PostValidator extends LaravelValidator {
 
@@ -1066,7 +1066,7 @@ Alternatively, instead of using a class to define its validation rules, you can 
 repository property, it will have the same effect as a Validation class.
 
 ```php
-use Prettus\Validator\Contracts\ValidatorInterface;use SOSTheBlack\Repository\Eloquent\BaseRepository;
+use SOSTheBlack\Repository\Contracts\ValidatorInterface;use SOSTheBlack\Repository\Eloquent\BaseRepository;
 
 class PostRepository extends BaseRepository {
 
@@ -1098,7 +1098,7 @@ class PostRepository extends BaseRepository {
 ```
 
 Validation is now ready. In case of a failure an exception will be given of the type:
-*Prettus\Validator\Exceptions\ValidatorException*
+*SOSTheBlack\Repository\Exceptions\ValidatorException*
 
 ### Presenters
 

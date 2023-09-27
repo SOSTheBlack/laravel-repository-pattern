@@ -7,9 +7,6 @@ use $MODEL$;
 
 /**
  * Class $CLASS$Transformer.
- *
-
- * @package $NAMESPACE$
  */
 class $CLASS$Transformer extends TransformerAbstract
 {
@@ -20,7 +17,7 @@ class $CLASS$Transformer extends TransformerAbstract
      *
      * @return array
      */
-    public function transform($CLASS$ $model)
+    public function transform($CLASS$ $model): array
     {
         return [
             'id'         => (int) $model->id,

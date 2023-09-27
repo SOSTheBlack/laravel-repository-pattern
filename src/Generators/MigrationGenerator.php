@@ -19,7 +19,7 @@ class MigrationGenerator extends Generator
      *
      * @var string
      */
-    protected $stub = 'migration/plain';
+    protected string $stub = 'migration/plain';
 
     /**
      * Get destination path for generated file.

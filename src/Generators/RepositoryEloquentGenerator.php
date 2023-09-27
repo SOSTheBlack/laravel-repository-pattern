@@ -17,7 +17,7 @@ class RepositoryEloquentGenerator extends Generator
      *
      * @var string
      */
-    protected $stub = 'repository/eloquent';
+    protected string $stub = 'repository/eloquent';
 
     /**
      * Get destination path for generated file.

@@ -14,7 +14,7 @@ class CriteriaGenerator extends Generator
      *
      * @var string
      */
-    protected $stub = 'criteria/criteria';
+    protected string $stub = 'criteria/criteria';
 
     /**
      * Get root namespace.

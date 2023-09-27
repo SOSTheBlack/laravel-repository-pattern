@@ -2,13 +2,12 @@
 
 $NAMESPACE$
 
-use \Prettus\Validator\Contracts\ValidatorInterface;
-use \Prettus\Validator\LaravelValidator;
+use SOSTheBlack\Repository\Contracts\ValidatorInterface;
+use SOSTheBlack\Repository\Validators\LaravelValidator;
 
 /**
  * Class $CLASS$Validator.
  *
-
  * @package $NAMESPACE$
  */
 class $CLASS$Validator extends LaravelValidator
@@ -18,7 +17,7 @@ class $CLASS$Validator extends LaravelValidator
      *
      * @var array
      */
-    protected $rules = [
+    protected array $rules = [
         ValidatorInterface::RULE_CREATE => $RULES$,
         ValidatorInterface::RULE_UPDATE => $RULES$,
     ];

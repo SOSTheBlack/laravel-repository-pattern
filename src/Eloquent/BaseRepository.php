@@ -10,8 +10,8 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
-use Prettus\Validator\Contracts\ValidatorInterface;
-use Prettus\Validator\Exceptions\ValidatorException;
+use SOSTheBlack\Repository\Contracts\ValidatorInterface;
+use SOSTheBlack\Repository\Exceptions\ValidatorException;
 use SOSTheBlack\Repository\Contracts\CriteriaInterface;
 use SOSTheBlack\Repository\Contracts\Presentable;
 use SOSTheBlack\Repository\Contracts\PresenterInterface;
@@ -189,7 +189,7 @@ abstract class BaseRepository implements RepositoryInterface, RepositoryCriteria
     }
 
     /**
-     * Specify Validator class name of Prettus\Validator\Contracts\ValidatorInterface
+     * Specify Validator class name of SOSTheBlack\Repository\Contracts\ValidatorInterface
      *
      * @return ValidatorInterface|null
      * @throws Exception
@@ -197,8 +197,8 @@ abstract class BaseRepository implements RepositoryInterface, RepositoryCriteria
     public function validator(): ?ValidatorInterface
     {
         if (isset($this->rules) && !is_null($this->rules) && is_array($this->rules) && !empty($this->rules)) {
-            if (class_exists('Prettus\Validator\LaravelValidator')) {
-                $validator = app('Prettus\Validator\LaravelValidator');
+            if (class_exists(\SOSTheBlack\Repository\LaravelValidator::class)) {
+                $validator = app(\SOSTheBlack\Repository\LaravelValidator::class);
                 if ($validator instanceof ValidatorInterface) {
                     $validator->setRules($this->rules);
 

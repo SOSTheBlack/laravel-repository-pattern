@@ -14,7 +14,7 @@ class PresenterGenerator extends Generator
      *
      * @var string
      */
-    protected $stub = 'presenter/presenter';
+    protected string $stub = 'presenter/presenter';
 
     /**
      * Get array replacements.

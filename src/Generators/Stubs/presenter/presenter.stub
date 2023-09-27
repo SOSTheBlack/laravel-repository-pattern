@@ -18,7 +18,7 @@ class $CLASS$Presenter extends FractalPresenter
      *
      * @return \League\Fractal\TransformerAbstract
      */
-    public function getTransformer()
+    public function getTransformer(): $CLASS$Transformer
     {
         return new $CLASS$Transformer();
     }

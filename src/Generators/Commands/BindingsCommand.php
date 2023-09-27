@@ -2,8 +2,8 @@
 
 namespace SOSTheBlack\Repository\Generators\Commands;
 
-use File;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\File;
 use SOSTheBlack\Repository\Generators\BindingsGenerator;
 use SOSTheBlack\Repository\Generators\FileAlreadyExistsException;
 use Symfony\Component\Console\Input\InputArgument;
@@ -36,7 +36,7 @@ class BindingsCommand extends Command
      *
      * @var string
      */
-    protected $type = 'Bindings';
+    protected string $type = 'Bindings';
 
     /**
      * Execute the command.
@@ -44,7 +44,7 @@ class BindingsCommand extends Command
      * @return void
      * @see fire()
      */
-    public function handle()
+    public function handle(): void
     {
         $this->laravel->call([$this, 'fire'], func_get_args());
     }
@@ -88,7 +88,7 @@ class BindingsCommand extends Command
      *
      * @return array
      */
-    public function getArguments()
+    public function getArguments(): array
     {
         return [
             [
@@ -106,7 +106,7 @@ class BindingsCommand extends Command
      *
      * @return array
      */
-    public function getOptions()
+    public function getOptions(): array
     {
         return [
             [

@@ -17,7 +17,7 @@ class RepositoryInterfaceGenerator extends Generator
      *
      * @var string
      */
-    protected $stub = 'repository/interface';
+    protected string $stub = 'repository/interface';
 
     /**
      * Get root namespace.

@@ -18,23 +18,23 @@ class SchemaParser implements Arrayable
      *
      * @var array
      */
-    protected $customAttributes = [
+    protected array $customAttributes = [
         'remember_token' => 'rememberToken()',
         'soft_delete' => 'softDeletes()',
     ];
     /**
      * The migration schema.
      *
-     * @var string
+     * @var string|null
      */
-    protected $schema;
+    protected ?string $schema;
 
     /**
      * Create new instance.
      *
      * @param string|null $schema
      */
-    public function __construct($schema = null)
+    public function __construct(?string $schema = null)
     {
         $this->schema = $schema;
     }
@@ -44,7 +44,7 @@ class SchemaParser implements Arrayable
      *
      * @return string
      */
-    public function up()
+    public function up(): string
     {
         return $this->render();
     }
@@ -54,7 +54,7 @@ class SchemaParser implements Arrayable
      *
      * @return string
      */
-    public function render()
+    public function render(): string
     {
         $results = '';
         foreach ($this->toArray() as $column => $attributes) {
@@ -69,7 +69,7 @@ class SchemaParser implements Arrayable
      *
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         return $this->parse($this->schema);
     }
@@ -81,7 +81,7 @@ class SchemaParser implements Arrayable
      *
      * @return array
      */
-    public function parse($schema)
+    public function parse(string $schema): array
     {
         $this->schema = $schema;
         $parsed = [];
@@ -99,7 +99,7 @@ class SchemaParser implements Arrayable
      *
      * @return array
      */
-    public function getSchemas()
+    public function getSchemas(): array
     {
         if (is_null($this->schema)) {
             return [];
@@ -115,7 +115,7 @@ class SchemaParser implements Arrayable
      *
      * @return string
      */
-    public function getColumn($schema)
+    public function getColumn(string $schema): string
     {
         return Arr::first(explode(':', $schema), function ($key, $value) {
             return $value;
@@ -130,7 +130,7 @@ class SchemaParser implements Arrayable
      *
      * @return array
      */
-    public function getAttributes($column, $schema)
+    public function getAttributes(string $column, string $schema): array
     {
         $fields = str_replace($column . ':', '', $schema);
 
@@ -144,7 +144,7 @@ class SchemaParser implements Arrayable
      *
      * @return boolean
      */
-    public function hasCustomAttribute($column)
+    public function hasCustomAttribute(string $column): bool
     {
         return array_key_exists($column, $this->customAttributes);
     }
@@ -156,7 +156,7 @@ class SchemaParser implements Arrayable
      *
      * @return array
      */
-    public function getCustomAttribute($column)
+    public function getCustomAttribute(string $column): array
     {
         return (array)$this->customAttributes[$column];
     }
@@ -166,10 +166,11 @@ class SchemaParser implements Arrayable
      *
      * @param string $column
      * @param array $attributes
+     * @param string $type
      *
      * @return string
      */
-    public function createField($column, $attributes, $type = 'add')
+    public function createField(string $column, array $attributes, string $type = 'add'): string
     {
         $results = "\t\t\t" . '$table';
         foreach ($attributes as $key => $field) {
@@ -184,7 +185,7 @@ class SchemaParser implements Arrayable
      *
      * @return string
      */
-    public function down()
+    public function down(): string
     {
         $results = '';
         foreach ($this->toArray() as $column => $attributes) {
@@ -203,7 +204,7 @@ class SchemaParser implements Arrayable
      *
      * @return string
      */
-    protected function addColumn($key, $field, $column)
+    protected function addColumn(int $key, string $field, string $column): string
     {
         if ($this->hasCustomAttribute($column)) {
             return '->' . $field;
@@ -227,7 +228,7 @@ class SchemaParser implements Arrayable
      *
      * @return string
      */
-    protected function removeColumn($key, $field, $column)
+    protected function removeColumn(int $key, string $field, string $column): string
     {
         if ($this->hasCustomAttribute($column)) {
             return '->' . $field;

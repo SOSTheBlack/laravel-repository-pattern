@@ -2,54 +2,34 @@
 
 $NAMESPACE$
 
-use Illuminate\Http\Request;
-
 use $APPNAME$Http\Requests;
-use Prettus\Validator\Contracts\ValidatorInterface;
-use Prettus\Validator\Exceptions\ValidatorException;
+use SOSTheBlack\Repository\Contracts\ValidatorInterface;
+use SOSTheBlack\Repository\Exceptions\ValidatorException;
 use $APPNAME$Http\Requests\$CLASS$CreateRequest;
 use $APPNAME$Http\Requests\$CLASS$UpdateRequest;
+use Illuminate\Http\Response;
+use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\JsonResponse
 $REPOSITORY$
 $VALIDATOR$
 
-/**
- * Class $CONTROLLER$Controller.
- *
-
- * @package $NAMESPACE$
- */
-class $CONTROLLER$Controller extends Controller
+final class $CONTROLLER$Controller extends Controller
 {
-    /**
-     * @var $CLASS$Repository
-     */
-    protected $repository;
-
-    /**
-     * @var $CLASS$Validator
-     */
-    protected $validator;
-
-    /**
-     * $CONTROLLER$Controller constructor.
-     *
-     * @param $CLASS$Repository $repository
-     * @param $CLASS$Validator $validator
-     */
-    public function __construct($CLASS$Repository $repository, $CLASS$Validator $validator)
+    public function __construct(protected $CLASS$Repository $repository, protected $CLASS$Validator $validator)
     {
-        $this->repository = $repository;
-        $this->validator  = $validator;
+
     }
 
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function index()
+    public function index(): View
     {
-        $this->repository->pushCriteria(app('SOSTheBlack\Repository\Criteria\RequestCriteria'));
+        $this->repository->pushCriteria(app(\SOSTheBlack\Repository\Criteria\RequestCriteria::class));
         $$PLURAL$ = $this->repository->all();
 
         if (request()->wantsJson()) {
@@ -67,11 +47,11 @@ class $CONTROLLER$Controller extends Controller
      *
      * @param  $CLASS$CreateRequest $request
      *
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse|JsonResponse;
      *
-     * @throws \Prettus\Validator\Exceptions\ValidatorException
+     * @throws ValidatorException
      */
-    public function store($CLASS$CreateRequest $request)
+    public function store($CLASS$CreateRequest $request): RedirectResponse|JsonResponse
     {
         try {
 
@@ -109,7 +89,7 @@ class $CONTROLLER$Controller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id): JsonResponse|View
     {
         $$SINGULAR$ = $this->repository->find($id);
 
@@ -128,9 +108,9 @@ class $CONTROLLER$Controller extends Controller
      *
      * @param  int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function edit($id)
+    public function edit($id): View
     {
         $$SINGULAR$ = $this->repository->find($id);
 
@@ -143,11 +123,11 @@ class $CONTROLLER$Controller extends Controller
      * @param  $CLASS$UpdateRequest $request
      * @param  string            $id
      *
-     * @return Response
+     * @return RedirectResponse|JsonResponse
      *
-     * @throws \Prettus\Validator\Exceptions\ValidatorException
+     * @throws \SOSTheBlack\Repository\Exceptions\ValidatorException
      */
-    public function update($CLASS$UpdateRequest $request, $id)
+    public function update($CLASS$UpdateRequest $request, $id): RedirectResponse|JsonResponse
     {
         try {
 
@@ -186,9 +166,9 @@ class $CONTROLLER$Controller extends Controller
      *
      * @param  int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse|JsonResponse
      */
-    public function destroy($id)
+    public function destroy($id): RedirectResponse|JsonResponse
     {
         $deleted = $this->repository->delete($id);
 

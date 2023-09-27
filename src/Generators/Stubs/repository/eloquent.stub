@@ -6,12 +6,10 @@ use SOSTheBlack\Repository\Eloquent\BaseRepository;
 use SOSTheBlack\Repository\Criteria\RequestCriteria;
 use $REPOSITORY$
 use $MODEL$;
-$USE_VALIDATOR$
 
 /**
  * Class $CLASS$RepositoryEloquent.
  *
-
  * @package $NAMESPACE$
  */
 class $CLASS$RepositoryEloquent extends BaseRepository implements $CLASS$Repository
@@ -21,17 +19,17 @@ class $CLASS$RepositoryEloquent extends BaseRepository implements $CLASS$Reposit
      *
      * @return string
      */
-    public function model()
+    public function model(): string
     {
         return $CLASS$::class;
     }
 
-    $VALIDATOR$
-
     /**
      * Boot up the repository, pushing criteria
+     *
+     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }

@@ -17,7 +17,7 @@ class ModelGenerator extends Generator
      *
      * @var string
      */
-    protected $stub = 'model';
+    protected string $stub = 'model';
 
     /**
      * Get root namespace.
