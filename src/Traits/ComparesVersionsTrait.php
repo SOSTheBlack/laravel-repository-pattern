@@ -5,7 +5,6 @@ namespace SOSTheBlack\Repository\Traits;
 /**
  * Trait ComparesVersionsTrait
  * @package SOSTheBlack\Repository\Traits
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 trait ComparesVersionsTrait
 {

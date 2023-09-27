@@ -14,9 +14,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
 /**
- * Class RepositoryCommand
- * @package SOSTheBlack\Repository\Generators\Commands
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
+ * Class RepositoryCommand.\Commands
  */
 class RepositoryCommand extends Command
 {

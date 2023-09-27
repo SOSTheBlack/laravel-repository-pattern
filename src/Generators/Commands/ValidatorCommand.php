@@ -9,8 +9,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
 /**
- * Class ValidatorCommand
- * @package SOSTheBlack\Repository\Generators\Commands
+ * Class ValidatorCommand.\Commands
  */
 class ValidatorCommand extends Command
 {

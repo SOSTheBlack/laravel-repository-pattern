@@ -3,9 +3,7 @@
 namespace SOSTheBlack\Repository\Events;
 
 /**
- * Class RepositoryEntityDeleted
- * @package SOSTheBlack\Repository\Events
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
+ * Class RepositoryEntityDeleted.
  */
 class RepositoryEntityDeleting extends RepositoryEventBase
 {

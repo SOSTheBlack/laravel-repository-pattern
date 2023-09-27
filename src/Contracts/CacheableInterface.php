@@ -5,9 +5,7 @@ namespace SOSTheBlack\Repository\Contracts;
 use Illuminate\Contracts\Cache\Repository as CacheRepository;
 
 /**
- * Interface CacheableInterface
- * @package SOSTheBlack\Repository\Contracts
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
+ * Interface CacheableInterface.
  */
 interface CacheableInterface
 {

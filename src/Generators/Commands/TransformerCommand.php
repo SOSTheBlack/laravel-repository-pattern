@@ -9,9 +9,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
 /**
- * Class TransformerCommand
- * @package SOSTheBlack\Repository\Generators\Commands
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
+ * Class TransformerCommand.\Commands
  */
 class TransformerCommand extends Command
 {

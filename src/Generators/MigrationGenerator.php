@@ -7,9 +7,7 @@ use SOSTheBlack\Repository\Generators\Migrations\SchemaParser;
 use Symfony\Component\HttpFoundation\File\Exception\FileNotFoundException;
 
 /**
- * Class MigrationGenerator
- * @package SOSTheBlack\Repository\Generators
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
+ * Class MigrationGenerator.
  */
 class MigrationGenerator extends Generator
 {
@@ -26,7 +24,7 @@ class MigrationGenerator extends Generator
      *
      * @return string
      */
-    public function getPath()
+    public function getPath(): string
     {
         return $this->getBasePath() . $this->getFileName() . '.php';
     }
@@ -36,7 +34,7 @@ class MigrationGenerator extends Generator
      *
      * @return string
      */
-    public function getBasePath()
+    public function getBasePath(): string
     {
         return base_path() . '/database/migrations/';
     }
@@ -46,7 +44,7 @@ class MigrationGenerator extends Generator
      *
      * @return string
      */
-    public function getFileName()
+    public function getFileName(): string
     {
         return date('Y_m_d_His_') . $this->getMigrationName();
     }
@@ -56,7 +54,7 @@ class MigrationGenerator extends Generator
      *
      * @return string
      */
-    public function getMigrationName()
+    public function getMigrationName(): string
     {
         return strtolower($this->name);
     }
@@ -66,7 +64,7 @@ class MigrationGenerator extends Generator
      *
      * @return string
      */
-    public function getPathConfigNode()
+    public function getPathConfigNode(): string
     {
         return '';
     }
@@ -76,7 +74,7 @@ class MigrationGenerator extends Generator
      *
      * @return string
      */
-    public function getRootNamespace()
+    public function getRootNamespace(): string
     {
         return '';
     }
@@ -86,7 +84,7 @@ class MigrationGenerator extends Generator
      *
      * @return string
      */
-    public function getStub()
+    public function getStub(): string
     {
         $parser = $this->getNameParser();
 
@@ -143,7 +141,7 @@ class MigrationGenerator extends Generator
      *
      * @return NameParser
      */
-    public function getNameParser()
+    public function getNameParser(): NameParser
     {
         return new NameParser($this->name);
     }
@@ -153,7 +151,7 @@ class MigrationGenerator extends Generator
      *
      * @return SchemaParser
      */
-    public function getSchemaParser()
+    public function getSchemaParser(): SchemaParser
     {
         return new SchemaParser($this->fields);
     }

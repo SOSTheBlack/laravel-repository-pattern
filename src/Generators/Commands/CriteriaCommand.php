@@ -9,9 +9,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
 /**
- * Class CriteriaCommand
- * @package SOSTheBlack\Repository\Generators\Commands
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
+ * Class CriteriaCommand.\Commands
  */
 class CriteriaCommand extends Command
 {

@@ -3,9 +3,7 @@
 namespace SOSTheBlack\Repository\Contracts;
 
 /**
- * Interface Presentable
- * @package SOSTheBlack\Repository\Contracts
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
+ * Interface Presentable.
  */
 interface Presentable
 {

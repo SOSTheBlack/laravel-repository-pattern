@@ -2,12 +2,11 @@
 
 namespace SOSTheBlack\Repository\Generators;
 
+use Illuminate\Support\Facades\Schema;
 use SOSTheBlack\Repository\Generators\Migrations\SchemaParser;
 
 /**
- * Class ModelGenerator
- * @package SOSTheBlack\Repository\Generators
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
+ * Class ModelGenerator.
  */
 class ModelGenerator extends Generator
 {
@@ -24,7 +23,7 @@ class ModelGenerator extends Generator
      *
      * @return string
      */
-    public function getRootNamespace()
+    public function getRootNamespace(): string
     {
         return parent::getRootNamespace() . parent::getConfigGeneratorClassPath($this->getPathConfigNode());
     }
@@ -34,7 +33,7 @@ class ModelGenerator extends Generator
      *
      * @return string
      */
-    public function getPathConfigNode()
+    public function getPathConfigNode(): string
     {
         return 'models';
     }
@@ -44,7 +43,7 @@ class ModelGenerator extends Generator
      *
      * @return string
      */
-    public function getPath()
+    public function getPath(): string
     {
         return $this->getBasePath() . '/' . parent::getConfigGeneratorClassPath($this->getPathConfigNode(), true) . '/' . $this->getName() . '.php';
     }
@@ -55,7 +54,7 @@ class ModelGenerator extends Generator
      * @return string
      */
 
-    public function getBasePath()
+    public function getBasePath(): string
     {
         return config('repository.generator.basePath', app()->path());
     }
@@ -65,7 +64,7 @@ class ModelGenerator extends Generator
      *
      * @return array
      */
-    public function getReplacements()
+    public function getReplacements(): array
     {
         return array_merge(parent::getReplacements(), [
             'fillable' => $this->getFillable()
@@ -77,7 +76,7 @@ class ModelGenerator extends Generator
      *
      * @return string
      */
-    public function getFillable()
+    public function getFillable(): string
     {
         if (!$this->fillable) {
             return '[]';
@@ -96,7 +95,7 @@ class ModelGenerator extends Generator
      *
      * @return SchemaParser
      */
-    public function getSchemaParser()
+    public function getSchemaParser(): SchemaParser
     {
         return new SchemaParser($this->fillable);
     }

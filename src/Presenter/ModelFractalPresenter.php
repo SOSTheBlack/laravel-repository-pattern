@@ -9,7 +9,6 @@ use SOSTheBlack\Repository\Transformer\ModelTransformer;
 /**
  * Class ModelFractalPresenter
  * @package SOSTheBlack\Repository\Presenter
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class ModelFractalPresenter extends FractalPresenter
 {

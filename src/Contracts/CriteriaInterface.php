@@ -3,9 +3,7 @@
 namespace SOSTheBlack\Repository\Contracts;
 
 /**
- * Interface CriteriaInterface
- * @package SOSTheBlack\Repository\Contracts
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
+ * Interface CriteriaInterface.
  */
 interface CriteriaInterface
 {

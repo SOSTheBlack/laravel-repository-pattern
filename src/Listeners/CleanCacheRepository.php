@@ -13,7 +13,6 @@ use Throwable;
 /**
  * Class CleanCacheRepository
  * @package SOSTheBlack\Repository\Listeners
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class CleanCacheRepository
 {

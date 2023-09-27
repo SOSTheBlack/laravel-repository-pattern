@@ -5,9 +5,7 @@ namespace SOSTheBlack\Repository\Generators;
 use SOSTheBlack\Repository\Generators\Migrations\SchemaParser;
 
 /**
- * Class RepositoryEloquentGenerator
- * @package SOSTheBlack\Repository\Generators
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
+ * Class RepositoryEloquentGenerator.
  */
 class RepositoryEloquentGenerator extends Generator
 {
@@ -24,7 +22,7 @@ class RepositoryEloquentGenerator extends Generator
      *
      * @return string
      */
-    public function getPath()
+    public function getPath(): string
     {
         return $this->getBasePath() . '/' . parent::getConfigGeneratorClassPath($this->getPathConfigNode(), true) . '/' . $this->getName() . 'RepositoryEloquent.php';
     }
@@ -34,7 +32,7 @@ class RepositoryEloquentGenerator extends Generator
      *
      * @return string
      */
-    public function getBasePath()
+    public function getBasePath(): string
     {
         return config('repository.generator.basePath', app()->path());
     }
@@ -44,7 +42,7 @@ class RepositoryEloquentGenerator extends Generator
      *
      * @return string
      */
-    public function getPathConfigNode()
+    public function getPathConfigNode(): string
     {
         return 'repositories';
     }
@@ -54,7 +52,7 @@ class RepositoryEloquentGenerator extends Generator
      *
      * @return array
      */
-    public function getReplacements()
+    public function getReplacements(): array
     {
         $repository = parent::getRootNamespace() . parent::getConfigGeneratorClassPath('interfaces') . '\\' . $this->name . 'Repository;';
         $repository = str_replace([
@@ -76,7 +74,7 @@ class RepositoryEloquentGenerator extends Generator
      *
      * @return string
      */
-    public function getRootNamespace()
+    public function getRootNamespace(): string
     {
         return parent::getRootNamespace() . parent::getConfigGeneratorClassPath($this->getPathConfigNode());
     }
@@ -86,7 +84,7 @@ class RepositoryEloquentGenerator extends Generator
      *
      * @return string
      */
-    public function getFillable()
+    public function getFillable(): string
     {
         if (!$this->fillable) {
             return '[]';
@@ -105,12 +103,12 @@ class RepositoryEloquentGenerator extends Generator
      *
      * @return SchemaParser
      */
-    public function getSchemaParser()
+    public function getSchemaParser(): SchemaParser
     {
         return new SchemaParser($this->fillable);
     }
 
-    public function getValidatorUse()
+    public function getValidatorUse(): string
     {
         $validator = $this->getValidator();
 
@@ -118,7 +116,7 @@ class RepositoryEloquentGenerator extends Generator
     }
 
 
-    public function getValidator()
+    public function getValidator(): string
     {
         $validatorGenerator = new ValidatorGenerator([
             'name' => $this->name,
@@ -136,7 +134,7 @@ class RepositoryEloquentGenerator extends Generator
     }
 
 
-    public function getValidatorMethod()
+    public function getValidatorMethod(): string
     {
         if ($this->validator != 'yes') {
             return '';

@@ -7,9 +7,7 @@ use SOSTheBlack\Repository\Contracts\RepositoryEventBaseInterface;
 use SOSTheBlack\Repository\Contracts\RepositoryInterface;
 
 /**
- * Class RepositoryEventBase
- * @package SOSTheBlack\Repository\Events
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
+ * Class RepositoryEventBase.
  */
 abstract class RepositoryEventBase implements RepositoryEventBaseInterface
 {

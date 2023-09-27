@@ -10,9 +10,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
 /**
- * Class PresenterCommand
- * @package SOSTheBlack\Repository\Generators\Commands
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
+ * Class PresenterCommand.\Commands
  */
 class PresenterCommand extends Command
 {

@@ -6,7 +6,6 @@ use SOSTheBlack\Repository\Contracts\Transformable;
 /**
  * Class ModelTransformer
  * @package SOSTheBlack\Repository\Transformer
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class ModelTransformer extends TransformerAbstract
 {

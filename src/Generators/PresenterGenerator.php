@@ -3,9 +3,7 @@
 namespace SOSTheBlack\Repository\Generators;
 
 /**
- * Class PresenterGenerator
- * @package SOSTheBlack\Repository\Generators
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
+ * Class PresenterGenerator.
  */
 class PresenterGenerator extends Generator
 {
@@ -21,7 +19,7 @@ class PresenterGenerator extends Generator
      *
      * @return array
      */
-    public function getReplacements()
+    public function getReplacements(): array
     {
         $transformerGenerator = new TransformerGenerator([
             'name' => $this->name
@@ -43,7 +41,7 @@ class PresenterGenerator extends Generator
      *
      * @return string
      */
-    public function getRootNamespace()
+    public function getRootNamespace(): string
     {
         return parent::getRootNamespace() . parent::getConfigGeneratorClassPath($this->getPathConfigNode());
     }
@@ -53,7 +51,7 @@ class PresenterGenerator extends Generator
      *
      * @return string
      */
-    public function getPathConfigNode()
+    public function getPathConfigNode(): string
     {
         return 'presenters';
     }
@@ -63,7 +61,7 @@ class PresenterGenerator extends Generator
      *
      * @return string
      */
-    public function getPath()
+    public function getPath(): string
     {
         return $this->getBasePath() . '/' . parent::getConfigGeneratorClassPath($this->getPathConfigNode(), true) . '/' . $this->getName() . 'Presenter.php';
     }
@@ -73,7 +71,7 @@ class PresenterGenerator extends Generator
      *
      * @return string
      */
-    public function getBasePath()
+    public function getBasePath(): string
     {
         return config('repository.generator.basePath', app()->path());
     }

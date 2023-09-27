@@ -8,9 +8,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
 /**
- * Class EntityCommand
- * @package SOSTheBlack\Repository\Generators\Commands
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
+ * Class EntityCommand.\Commands
  */
 class EntityCommand extends Command
 {

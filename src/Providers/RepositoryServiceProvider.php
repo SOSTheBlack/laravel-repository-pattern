@@ -15,7 +15,6 @@ use SOSTheBlack\Repository\Generators\Commands\ValidatorCommand;
 /**
  * Class RepositoryServiceProvider
  * @package SOSTheBlack\Repository\Providers
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class RepositoryServiceProvider extends ServiceProvider
 {

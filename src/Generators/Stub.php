@@ -3,9 +3,7 @@
 namespace SOSTheBlack\Repository\Generators;
 
 /**
- * Class Stub
- * @package SOSTheBlack\Repository\Generators
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
+ * Class Stub.
  */
 class Stub
 {
@@ -14,27 +12,27 @@ class Stub
      *
      * @var null|string
      */
-    protected static $basePath = null;
+    protected static ?string $basePath = null;
     /**
      * The stub path.
      *
      * @var string
      */
-    protected $path;
+    protected string $path;
     /**
      * The replacements array.
      *
      * @var array
      */
-    protected $replaces = [];
+    protected array $replaces = [];
 
     /**
      * The contructor.
      *
-     * @param string $path
-     * @param array $replaces
+     * @param  string  $path
+     * @param array    $replaces
      */
-    public function __construct($path, array $replaces = [])
+    public function __construct(string $path, array $replaces = [])
     {
         $this->path = $path;
         $this->replaces = $replaces;
@@ -43,12 +41,12 @@ class Stub
     /**
      * Create new self instance.
      *
-     * @param string $path
-     * @param array $replaces
+     * @param  string  $path
+     * @param array    $replaces
      *
      * @return self
      */
-    public static function create($path, array $replaces = [])
+    public static function create(string $path, array $replaces = []): Stub
     {
         return new static($path, $replaces);
     }
@@ -56,11 +54,11 @@ class Stub
     /**
      * Set base path.
      *
-     * @param string $path
+     * @param  string  $path
      *
      * @return void
      */
-    public static function setBasePath($path)
+    public static function setBasePath(string $path): void
     {
         static::$basePath = $path;
     }
@@ -72,7 +70,7 @@ class Stub
      *
      * @return $this
      */
-    public function replace(array $replaces = [])
+    public function replace(array $replaces = []): static
     {
         $this->replaces = $replaces;
 
@@ -84,7 +82,7 @@ class Stub
      *
      * @return array
      */
-    public function getReplaces()
+    public function getReplaces(): array
     {
         return $this->replaces;
     }
@@ -104,7 +102,7 @@ class Stub
      *
      * @return string
      */
-    public function render()
+    public function render(): string
     {
         return $this->getContents();
     }
@@ -112,9 +110,9 @@ class Stub
     /**
      * Get stub contents.
      *
-     * @return mixed|string
+     * @return mixed
      */
-    public function getContents()
+    public function getContents(): mixed
     {
         $contents = file_get_contents($this->getPath());
         foreach ($this->replaces as $search => $replace) {
@@ -129,7 +127,7 @@ class Stub
      *
      * @return string
      */
-    public function getPath()
+    public function getPath(): string
     {
         return static::$basePath . $this->path;
     }
@@ -137,11 +135,11 @@ class Stub
     /**
      * Set stub path.
      *
-     * @param string $path
+     * @param  string  $path
      *
      * @return self
      */
-    public function setPath($path)
+    public function setPath(string $path): static
     {
         $this->path = $path;
 

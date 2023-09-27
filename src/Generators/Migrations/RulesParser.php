@@ -6,9 +6,7 @@ use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Arr;
 
 /**
- * Class RulesParser
- * @package SOSTheBlack\Repository\Generators\Migrations
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
+ * Class RulesParser.\Migrations
  */
 class RulesParser implements Arrayable
 {

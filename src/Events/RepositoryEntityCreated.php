@@ -3,9 +3,7 @@
 namespace SOSTheBlack\Repository\Events;
 
 /**
- * Class RepositoryEntityCreated
- * @package SOSTheBlack\Repository\Events
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
+ * Class RepositoryEntityCreated.
  */
 class RepositoryEntityCreated extends RepositoryEventBase
 {

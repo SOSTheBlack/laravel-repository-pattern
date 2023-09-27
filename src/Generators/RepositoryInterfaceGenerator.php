@@ -5,9 +5,7 @@ namespace SOSTheBlack\Repository\Generators;
 use SOSTheBlack\Repository\Generators\Migrations\SchemaParser;
 
 /**
- * Class RepositoryInterfaceGenerator
- * @package SOSTheBlack\Repository\Generators
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
+ * Class RepositoryInterfaceGenerator.
  */
 class RepositoryInterfaceGenerator extends Generator
 {
@@ -24,7 +22,7 @@ class RepositoryInterfaceGenerator extends Generator
      *
      * @return string
      */
-    public function getRootNamespace()
+    public function getRootNamespace(): string
     {
         return parent::getRootNamespace() . parent::getConfigGeneratorClassPath($this->getPathConfigNode());
     }
@@ -34,7 +32,7 @@ class RepositoryInterfaceGenerator extends Generator
      *
      * @return string
      */
-    public function getPathConfigNode()
+    public function getPathConfigNode(): string
     {
         return 'interfaces';
     }
@@ -44,7 +42,7 @@ class RepositoryInterfaceGenerator extends Generator
      *
      * @return string
      */
-    public function getPath()
+    public function getPath(): string
     {
         return $this->getBasePath() . '/' . parent::getConfigGeneratorClassPath($this->getPathConfigNode(), true) . '/' . $this->getName() . 'Repository.php';
     }
@@ -54,7 +52,7 @@ class RepositoryInterfaceGenerator extends Generator
      *
      * @return string
      */
-    public function getBasePath()
+    public function getBasePath(): string
     {
         return config('repository.generator.basePath', app()->path());
     }
@@ -64,7 +62,7 @@ class RepositoryInterfaceGenerator extends Generator
      *
      * @return array
      */
-    public function getReplacements()
+    public function getReplacements(): array
     {
         return array_merge(parent::getReplacements(), [
             'fillable' => $this->getFillable()
@@ -76,7 +74,7 @@ class RepositoryInterfaceGenerator extends Generator
      *
      * @return string
      */
-    public function getFillable()
+    public function getFillable(): string
     {
         if (!$this->fillable) {
             return '[]';
@@ -95,7 +93,7 @@ class RepositoryInterfaceGenerator extends Generator
      *
      * @return SchemaParser
      */
-    public function getSchemaParser()
+    public function getSchemaParser(): SchemaParser
     {
         return new SchemaParser($this->fillable);
     }

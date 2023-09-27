@@ -12,7 +12,6 @@ use SOSTheBlack\Repository\Helpers\CacheKeys;
 /**
  * Class CacheableRepository
  * @package SOSTheBlack\Repository\Traits
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 trait CacheableRepository
 {

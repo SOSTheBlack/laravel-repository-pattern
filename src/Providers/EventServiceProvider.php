@@ -11,7 +11,6 @@ use SOSTheBlack\Repository\Listeners\CleanCacheRepository;
 /**
  * Class EventServiceProvider
  * @package SOSTheBlack\Repository\Providers
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class EventServiceProvider extends ServiceProvider
 {

@@ -6,10 +6,7 @@ use Exception;
 use Throwable;
 
 /**
- * Class RepositoryException
- *
- * @package SOSTheBlack\Repository\Exceptions
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
+ * Class RepositoryException.
  */
 class RepositoryException extends Exception implements Throwable
 {

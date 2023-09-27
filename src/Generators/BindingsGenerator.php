@@ -3,9 +3,7 @@
 namespace SOSTheBlack\Repository\Generators;
 
 /**
- * Class BindingsGenerator
- * @package SOSTheBlack\Repository\Generators
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
+ * Class BindingsGenerator.
  */
 class BindingsGenerator extends Generator
 {
@@ -37,7 +35,7 @@ class BindingsGenerator extends Generator
      *
      * @return string
      */
-    public function getPath()
+    public function getPath(): string
     {
         return $this->getBasePath() . '/Providers/' . parent::getConfigGeneratorClassPath($this->getPathConfigNode(), true) . '.php';
     }
@@ -47,7 +45,7 @@ class BindingsGenerator extends Generator
      *
      * @return string
      */
-    public function getBasePath()
+    public function getBasePath(): string
     {
         return config('repository.generator.basePath', app()->path());
     }
@@ -57,7 +55,7 @@ class BindingsGenerator extends Generator
      *
      * @return string
      */
-    public function getPathConfigNode()
+    public function getPathConfigNode(): string
     {
         return 'provider';
     }
@@ -67,7 +65,7 @@ class BindingsGenerator extends Generator
      *
      * @return string
      */
-    public function getRepository()
+    public function getRepository(): string
     {
         $repositoryGenerator = new RepositoryInterfaceGenerator([
             'name' => $this->name,
@@ -86,7 +84,7 @@ class BindingsGenerator extends Generator
      *
      * @return string
      */
-    public function getRootNamespace()
+    public function getRootNamespace(): string
     {
         return parent::getRootNamespace() . parent::getConfigGeneratorClassPath($this->getPathConfigNode());
     }
@@ -96,7 +94,7 @@ class BindingsGenerator extends Generator
      *
      * @return string
      */
-    public function getEloquentRepository()
+    public function getEloquentRepository(): string
     {
         $repositoryGenerator = new RepositoryEloquentGenerator([
             'name' => $this->name,
@@ -115,7 +113,7 @@ class BindingsGenerator extends Generator
      *
      * @return array
      */
-    public function getReplacements()
+    public function getReplacements(): array
     {
 
         return array_merge(parent::getReplacements(), [

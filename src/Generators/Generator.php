@@ -7,9 +7,7 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
 
 /**
- * Class Generator
- * @package SOSTheBlack\Repository\Generators
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
+ * Class Generator.
  */
 abstract class Generator
 {
@@ -190,7 +188,7 @@ abstract class Generator
         return $path;
     }
 
-    abstract public function getPathConfigNode();
+    abstract public function getPathConfigNode(): string;
 
     /**
      * Run the generator.

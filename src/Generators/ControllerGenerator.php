@@ -5,9 +5,7 @@ namespace SOSTheBlack\Repository\Generators;
 use Illuminate\Support\Str;
 
 /**
- * Class ControllerGenerator
- * @package SOSTheBlack\Repository\Generators
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
+ * Class ControllerGenerator.
  */
 class ControllerGenerator extends Generator
 {
@@ -24,7 +22,7 @@ class ControllerGenerator extends Generator
      *
      * @return string
      */
-    public function getPath()
+    public function getPath(): string
     {
         return $this->getBasePath() . '/' . parent::getConfigGeneratorClassPath($this->getPathConfigNode(), true) . '/' . $this->getControllerName() . 'Controller.php';
     }
@@ -34,7 +32,7 @@ class ControllerGenerator extends Generator
      *
      * @return string
      */
-    public function getBasePath()
+    public function getBasePath(): string
     {
         return config('repository.generator.basePath', app()->path());
     }
@@ -44,7 +42,7 @@ class ControllerGenerator extends Generator
      *
      * @return string
      */
-    public function getPathConfigNode()
+    public function getPathConfigNode(): string
     {
         return 'controllers';
     }
@@ -54,7 +52,7 @@ class ControllerGenerator extends Generator
      *
      * @return string
      */
-    public function getControllerName()
+    public function getControllerName(): string
     {
 
         return ucfirst($this->getPluralName());
@@ -65,7 +63,7 @@ class ControllerGenerator extends Generator
      *
      * @return string
      */
-    public function getPluralName()
+    public function getPluralName(): string
     {
 
         return Str::plural(lcfirst(ucwords($this->getClass())));
@@ -76,7 +74,7 @@ class ControllerGenerator extends Generator
      *
      * @return array
      */
-    public function getReplacements()
+    public function getReplacements(): array
     {
 
         return array_merge(parent::getReplacements(), [
@@ -94,7 +92,7 @@ class ControllerGenerator extends Generator
      *
      * @return string
      */
-    public function getSingularName()
+    public function getSingularName(): string
     {
         return Str::singular(lcfirst(ucwords($this->getClass())));
     }
@@ -104,7 +102,7 @@ class ControllerGenerator extends Generator
      *
      * @return string
      */
-    public function getValidator()
+    public function getValidator(): string
     {
         $validatorGenerator = new ValidatorGenerator([
             'name' => $this->name,
@@ -123,7 +121,7 @@ class ControllerGenerator extends Generator
      *
      * @return string
      */
-    public function getRootNamespace()
+    public function getRootNamespace(): string
     {
         return str_replace('/', '\\', parent::getRootNamespace() . parent::getConfigGeneratorClassPath($this->getPathConfigNode()));
     }
@@ -133,7 +131,7 @@ class ControllerGenerator extends Generator
      *
      * @return string
      */
-    public function getRepository()
+    public function getRepository(): string
     {
         $repositoryGenerator = new RepositoryInterfaceGenerator([
             'name' => $this->name,

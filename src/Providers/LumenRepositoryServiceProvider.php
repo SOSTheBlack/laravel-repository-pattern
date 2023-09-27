@@ -8,7 +8,6 @@ use SOSTheBlack\Repository\Generators\Commands\RepositoryCommand;
 /**
  * Class LumenRepositoryServiceProvider
  * @package SOSTheBlack\Repository\Providers
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class LumenRepositoryServiceProvider extends ServiceProvider
 {

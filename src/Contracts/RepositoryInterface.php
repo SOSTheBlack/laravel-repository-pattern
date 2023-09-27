@@ -9,9 +9,7 @@ use SOSTheBlack\Repository\Exceptions\ValidatorException;
 use SOSTheBlack\Repository\Exceptions\RepositoryException;
 
 /**
- * Interface RepositoryInterface
- * @package SOSTheBlack\Repository\Contracts
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
+ * Interface RepositoryInterface.
  */
 interface RepositoryInterface
 {

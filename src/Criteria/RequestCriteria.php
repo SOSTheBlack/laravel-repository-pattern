@@ -13,7 +13,6 @@ use SOSTheBlack\Repository\Contracts\RepositoryInterface;
 /**
  * Class RequestCriteria
  * @package SOSTheBlack\Repository\Criteria
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
  */
 class RequestCriteria implements CriteriaInterface
 {

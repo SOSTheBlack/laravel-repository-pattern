@@ -3,9 +3,7 @@
 namespace SOSTheBlack\Repository\Generators\Migrations;
 
 /**
- * Class NameParser
- * @package SOSTheBlack\Repository\Generators\Migrations
- * @author Jean C. Garcia <garciasoftwares@gmail.com>
+ * Class NameParser.\Migrations
  */
 class NameParser
 {

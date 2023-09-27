@@ -27,10 +27,7 @@ use SOSTheBlack\Repository\Exceptions\RepositoryException;
 use SOSTheBlack\Repository\Traits\ComparesVersionsTrait;
 
 /**
- * Class BaseRepository
- *
- * @package SOSTheBlack\Repository\Eloquent
- * @author  Anderson Andrade <contato@andersonandra.de>
+ * Class BaseRepository.
  */
 abstract class BaseRepository implements RepositoryInterface, RepositoryCriteriaInterface
 {
