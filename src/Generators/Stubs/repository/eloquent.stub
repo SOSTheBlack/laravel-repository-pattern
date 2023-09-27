@@ -31,7 +31,10 @@ class $CLASS$RepositoryEloquent extends BaseRepository implements $CLASS$Reposit
      */
     public function boot(): void
     {
-        $this->pushCriteria(app(RequestCriteria::class));
+        try {
+            $this->pushCriteria(app(RequestCriteria::class));
+        } catch (RepositoryException $repositoryException) {
+        }
     }
 
 }
