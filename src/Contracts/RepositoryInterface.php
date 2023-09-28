@@ -3,6 +3,7 @@
 namespace SOSTheBlack\Repository\Contracts;
 
 use Closure;
+use Illuminate\Support\Str;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\Collection;
 use SOSTheBlack\Repository\Exceptions\ValidatorException;
@@ -23,6 +24,20 @@ interface RepositoryInterface
      * @return mixed
      */
     public static function __callStatic($method, $arguments): mixed;
+
+    /**
+     * Get the fillable attributes for the model.
+     *
+     * @return array<string>
+     */
+    public function getFillable(): array;
+
+    /**
+     * Get the table associated with the model.
+     *
+     * @return string
+     */
+    public function getTable(): string;
 
     /**
      * Retrieve data array for populate field select

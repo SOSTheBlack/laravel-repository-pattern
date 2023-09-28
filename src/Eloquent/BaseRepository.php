@@ -4,6 +4,7 @@ namespace SOSTheBlack\Repository\Eloquent;
 
 use Closure;
 use Exception;
+use Illuminate\Support\Str;
 use Illuminate\Container\Container as Application;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
@@ -474,7 +475,7 @@ abstract class BaseRepository implements RepositoryInterface, RepositoryCriteria
     {
         foreach ($where as $field => $value) {
             if (is_array($value)) {
-                list($field, $condition, $val) = $value;
+                [$field, $condition, $val] = $value;
                 //smooth input
                 $condition = preg_replace('/\s\s+/', ' ', trim($condition));
 
@@ -1263,6 +1264,26 @@ abstract class BaseRepository implements RepositoryInterface, RepositoryCriteria
         $this->criteria = new Collection();
 
         return $this;
+    }
+
+    /**
+     * Get the fillable attributes for the model.
+     *
+     * @return array<string>
+     */
+    public function getFillable(): array
+    {
+        return $this->model->getFillable();
+    }
+
+    /**
+     * Get the table associated with the model.
+     *
+     * @return string
+     */
+    public function getTable(): string
+    {
+        return $this->model->getTable();
     }
 
     /**
