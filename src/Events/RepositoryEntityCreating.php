@@ -17,7 +17,7 @@ class RepositoryEntityCreating extends RepositoryEventBase
 
     public function __construct(RepositoryInterface $repository, array $model)
     {
-        parent::__construct($repository);
+        parent::__construct($repository, $model);
 
         $this->model = $model;
     }

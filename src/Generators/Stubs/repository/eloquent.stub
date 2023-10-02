@@ -4,6 +4,7 @@ $NAMESPACE$
 
 use SOSTheBlack\Repository\Eloquent\BaseRepository;
 use SOSTheBlack\Repository\Criteria\RequestCriteria;
+use SOSTheBlack\Repository\Exceptions\RepositoryException;
 use $REPOSITORY$
 use $MODEL$;
 

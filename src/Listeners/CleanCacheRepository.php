@@ -2,16 +2,18 @@
 
 namespace SOSTheBlack\Repository\Listeners;
 
-use Illuminate\Contracts\Cache\Repository as CacheRepository;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Log;
-use SOSTheBlack\Repository\Contracts\RepositoryInterface;
-use SOSTheBlack\Repository\Events\RepositoryEventBase;
-use SOSTheBlack\Repository\Helpers\CacheKeys;
 use Throwable;
+use Illuminate\Cache\CacheManager;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Database\Eloquent\Model;
+use SOSTheBlack\Repository\Helpers\CacheKeys;
+use SOSTheBlack\Repository\Events\RepositoryEventBase;
+use SOSTheBlack\Repository\Contracts\RepositoryInterface;
+use Illuminate\Contracts\Cache\Repository as CacheRepository;
 
 /**
  * Class CleanCacheRepository
+ *
  * @package SOSTheBlack\Repository\Listeners
  */
 class CleanCacheRepository
@@ -20,7 +22,7 @@ class CleanCacheRepository
     /**
      * @var CacheRepository|null
      */
-    protected ?CacheRepository $cache = null;
+    protected CacheRepository|CacheManager|null $cache = null;
 
     /**
      * @var RepositoryInterface|null
@@ -46,7 +48,7 @@ class CleanCacheRepository
     }
 
     /**
-     * @param RepositoryEventBase $event
+     * @param  RepositoryEventBase  $event
      */
     public function handle(RepositoryEventBase $event): void
     {

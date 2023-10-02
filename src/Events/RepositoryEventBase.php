@@ -12,9 +12,9 @@ use SOSTheBlack\Repository\Contracts\RepositoryInterface;
 abstract class RepositoryEventBase implements RepositoryEventBaseInterface
 {
     /**
-     * @var array|Model
+     * @var array|Model|null
      */
-    protected Model|array $model;
+    protected Model|array|null $model;
 
     /**
      * @var RepositoryInterface
@@ -30,7 +30,7 @@ abstract class RepositoryEventBase implements RepositoryEventBaseInterface
      * @param RepositoryInterface $repository
      * @param Model|null $model
      */
-    public function __construct(RepositoryInterface $repository, Model $model = null)
+    public function __construct(RepositoryInterface $repository, Model|array|null $model = null)
     {
         $this->repository = $repository;
         $this->model = $model;
