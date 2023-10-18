@@ -37,9 +37,9 @@ abstract class FractalPresenter implements PresenterInterface
     protected ?Manager $fractal = null;
 
     /**
-     * @var Collection|null
+     * @var null|Collection|Item
      */
-    protected ?Collection $resource = null;
+    protected null|Collection|Item $resource = null;
 
     /**
      * @throws Exception
