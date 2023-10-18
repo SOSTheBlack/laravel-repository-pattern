@@ -216,6 +216,19 @@ interface RepositoryInterface
     public function delete($id): int;
 
     /**
+     * Count results of repository
+     *
+     * @param  array  $where
+     * @param  string  $columns
+     *
+     * @return int
+     *
+     * @throws RepositoryException
+     * @throws BindingResolutionException
+     */
+    public function count(array $where = [], string $columns = '*'): int;
+
+    /**
      * Order collection by a given column
      *
      * @param string $column
