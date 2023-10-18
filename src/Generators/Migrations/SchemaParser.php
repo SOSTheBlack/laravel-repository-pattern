@@ -75,11 +75,11 @@ class SchemaParser implements Arrayable
     /**
      * Parse a string to array of formatted schema.
      *
-     * @param string $schema
+     * @param string|null $schema
      *
      * @return array
      */
-    public function parse(string $schema): array
+    public function parse(?string $schema): array
     {
         $this->schema = $schema;
         $parsed = [];
