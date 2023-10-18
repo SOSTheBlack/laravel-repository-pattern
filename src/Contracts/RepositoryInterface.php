@@ -325,6 +325,18 @@ interface RepositoryInterface
     public function skipPresenter(bool $status = true): static;
 
     /**
+     * Retrieve first data of repository
+     *
+     * @param  array  $columns
+     *
+     * @return mixed
+     *
+     * @throws BindingResolutionException
+     * @throws RepositoryException
+     */
+    public function first(array $columns = ['*']): mixed;
+
+    /**
      * Retrieve first data of repository, or return new Entity
      *
      * @param array $attributes
