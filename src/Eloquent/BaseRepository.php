@@ -798,12 +798,13 @@ abstract class BaseRepository implements RepositoryInterface, RepositoryCriteria
      *
      * @param  null  $limit
      * @param  array  $columns
+     * @param  string  $method
      *
      * @return mixed
      * @throws BindingResolutionException
      * @throws RepositoryException
      */
-    public function paginate($limit = null, array $columns = ['*']): mixed
+    public function paginate($limit = null, array $columns = ['*'], string $method = "paginate"): mixed
     {
         $this->applyCriteria();
         $this->applyScope();

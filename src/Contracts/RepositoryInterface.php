@@ -94,12 +94,13 @@ interface RepositoryInterface
     /**
      * Retrieve all data of repository, paginated
      *
-     * @param null $limit
-     * @param array $columns
+     * @param  null  $limit
+     * @param  array  $columns
+     * @param  string  $method
      *
      * @return mixed
      */
-    public function paginate($limit = null, array $columns = ['*']): mixed;
+    public function paginate($limit = null, array $columns = ['*'], string $method = "paginate"): mixed;
 
     /**
      * Retrieve all data of repository, simple paginated
