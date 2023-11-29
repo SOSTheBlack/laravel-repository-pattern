@@ -40,9 +40,9 @@ abstract class BaseRepository implements RepositoryInterface, RepositoryCriteria
     protected Application $app;
 
     /**
-     * @var Model
+     * @var Model|Builder
      */
-    protected Model $model;
+    protected Model|Builder $model;
 
     /**
      * @var array
