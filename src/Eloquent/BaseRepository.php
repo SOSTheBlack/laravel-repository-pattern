@@ -958,7 +958,7 @@ abstract class BaseRepository implements RepositoryInterface, RepositoryCriteria
         event(new RepositoryEntityCreating($this, $attributes));
 
         $model = $this->model->newInstance($attributes);
-        $model->save();
+        $model->saveOrFail();
         $this->resetModel();
 
         event(new RepositoryEntityCreated($this, $model));
@@ -1023,7 +1023,7 @@ abstract class BaseRepository implements RepositoryInterface, RepositoryCriteria
         event(new RepositoryEntityUpdating($this, $model));
 
         $model->fill($attributes);
-        $model->save();
+        $model->saveOrFail();
 
         $this->skipPresenter($temporarySkipPresenter);
         $this->resetModel();
