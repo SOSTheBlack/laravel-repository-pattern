@@ -1090,7 +1090,7 @@ abstract class BaseRepository implements RepositoryInterface, RepositoryCriteria
 
         event(new RepositoryEntityDeleting($this, $this->model->getModel()));
 
-        $deleted = $this->model->delete();
+        $deleted = $this->model->deleteOrFail();
 
         event(new RepositoryEntityDeleted($this, $this->model->getModel()));
 
@@ -1135,7 +1135,7 @@ abstract class BaseRepository implements RepositoryInterface, RepositoryCriteria
 
         event(new RepositoryEntityDeleting($this, $model));
 
-        $deleted = $model->delete();
+        $deleted = $model->deleteOrFail();
 
         event(new RepositoryEntityDeleted($this, $originalModel));
 
