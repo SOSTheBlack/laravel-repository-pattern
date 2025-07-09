@@ -7,7 +7,6 @@ use Exception;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
-use SOSTheBlack\Repository\LaravelValidator;
 use Illuminate\Container\Container as Application;
 use SOSTheBlack\Repository\Contracts\Presentable;
 use SOSTheBlack\Repository\Contracts\CriteriaInterface;
@@ -26,6 +25,8 @@ use SOSTheBlack\Repository\Events\RepositoryEntityDeleting;
 use SOSTheBlack\Repository\Events\RepositoryEntityUpdating;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use SOSTheBlack\Repository\Contracts\RepositoryCriteriaInterface;
+use SOSTheBlack\Repository\Criteria\RequestCriteria;
+use SOSTheBlack\Repository\Validators\LaravelValidator;
 
 /**
  * Class BaseRepository.
@@ -42,7 +43,7 @@ abstract class BaseRepository implements RepositoryInterface, RepositoryCriteria
     /**
      * @var Model|Builder
      */
-    protected Model|Builder $model;
+    protected Model|Builder|string $model;
 
     /**
      * @var array
@@ -110,21 +111,14 @@ abstract class BaseRepository implements RepositoryInterface, RepositoryCriteria
      */
     public function makeModel(): Model
     {
-        $model = $this->app->make($this->model());
+        $model = is_string($this->model) ? $this->app->make($this->model) : $this->model;
 
         if (!$model instanceof Model) {
-            throw new RepositoryException("Class {$this->model()} must be an instance of Illuminate\\Database\\Eloquent\\Model");
+            throw new RepositoryException("Model must be an instance of " . Model::class);
         }
 
         return $this->model = $model;
     }
-
-    /**
-     * Specify Model class name
-     *
-     * @return string
-     */
-    abstract public function model(): string;
 
     /**
      * @param  null  $presenter
@@ -211,11 +205,18 @@ abstract class BaseRepository implements RepositoryInterface, RepositoryCriteria
     }
 
     /**
+     * Boot up the repository, pushing criteria.
      *
+     * @return void
+     *
+     * @throws RepositoryException
      */
     public function boot(): void
     {
-        //
+        try {
+            $this->pushCriteria(app(RequestCriteria::class));
+        } catch (RepositoryException $repositoryException) {
+        }
     }
 
     /**
@@ -263,7 +264,7 @@ abstract class BaseRepository implements RepositoryInterface, RepositoryCriteria
      *
      * @return Collection|array
      */
-    public function lists(string $column, string $key = null): array|Collection
+    public function lists(string $column, ?string $key = null): array|Collection
     {
         $this->applyCriteria();
 
@@ -313,7 +314,7 @@ abstract class BaseRepository implements RepositoryInterface, RepositoryCriteria
      *
      * @return Collection|array
      */
-    public function pluck(string $column, string $key = null): array|Collection
+    public function pluck(string $column, ?string $key = null): array|Collection
     {
         $this->applyCriteria();
 
@@ -788,7 +789,7 @@ abstract class BaseRepository implements RepositoryInterface, RepositoryCriteria
      *
      * @return mixed
      */
-    public function simplePaginate(int $limit = null, array $columns = ['*']): mixed
+    public function simplePaginate(?int $limit = null, array $columns = ['*']): mixed
     {
         return $this->paginate($limit, $columns, "simplePaginate");
     }
@@ -1226,7 +1227,7 @@ abstract class BaseRepository implements RepositoryInterface, RepositoryCriteria
             $criteria = new $criteria;
         }
         if (!$criteria instanceof CriteriaInterface) {
-            throw new RepositoryException("Class ".get_class($criteria)." must be an instance of SOSTheBlack\\Repository\\Contracts\\CriteriaInterface");
+            throw new RepositoryException("Class " . get_class($criteria) . " must be an instance of SOSTheBlack\\Repository\\Contracts\\CriteriaInterface");
         }
         $this->criteria->push($criteria);
 
